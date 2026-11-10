@@ -60,14 +60,19 @@
 			$(this).next('ul').slideToggle(500);
 		});
 		
-		//Disable dropdown parent link
-		$('.navigation li.dropdown > a').on('click', function(e) {
-			e.preventDefault();
-		});
-		
-		//Disable dropdown parent link
+		//Disable dropdown parent link & toggle dropdown on click
 		$('.main-header .navigation li.dropdown > a,.hidden-bar .side-menu li.dropdown > a').on('click', function(e) {
 			e.preventDefault();
+			var $parent = $(this).parent('li.dropdown');
+			$parent.toggleClass('open');
+			$parent.siblings('li.dropdown').removeClass('open');
+		});
+
+		//Close desktop dropdown when clicking outside
+		$(document).on('click', function(e) {
+			if (!$(e.target).closest('.main-header .navigation li.dropdown').length) {
+				$('.main-header .navigation li.dropdown').removeClass('open');
+			}
 		});
 		
 		$('.cart-box .dropdown-menu').click(function(e) {
@@ -79,7 +84,7 @@
 	
 	// Add Current Class Auto
 	function dynamicCurrentMenuClass(selector) {
-		let FileName = window.location.href.split("https://html.themexriver.com/").reverse()[0];
+		let FileName = window.location.pathname.split("/").pop().split("?")[0].split("#")[0];
 
 		selector.find("li").each(function () {
 			let anchor = $(this).find("a");
@@ -93,8 +98,8 @@
 				$(this).addClass("current");
 			}
 		});
-		// if no file name return
-		if ("" == FileName) {
+		// if no file name or index return
+		if ("" == FileName || "index.html" == FileName) {
 			selector.find("li").eq(0).addClass("current");
 		}
 	}
@@ -131,6 +136,12 @@
 				$(this).parent('li').toggleClass('open');
 				$(this).parent('li').children('ul').slideToggle(500);
 			}
+		});
+
+		//Mobile menu parent link click triggers dropdown toggle
+		$('.mobile-menu .navigation > li.dropdown > a').on('click', function(e) {
+			e.preventDefault();
+			$(this).siblings('.dropdown-btn').trigger('click');
 		});
 
 		//3rd Level Nav
