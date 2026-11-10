@@ -74,6 +74,13 @@
 				$('.main-header .navigation li.dropdown').removeClass('open');
 			}
 		});
+
+		//Close desktop dropdown on Escape key
+		$(document).on('keydown', function(e) {
+			if (e.key === 'Escape' || e.keyCode === 27) {
+				$('.main-header .navigation li.dropdown').removeClass('open');
+			}
+		});
 		
 		$('.cart-box .dropdown-menu').click(function(e) {
 			e.stopPropagation();
