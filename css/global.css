@@ -1,4 +1,4 @@
-/* Pronix Printing Business HTML Template */
+
 
 /************ TABLE OF CONTENTS ***************
 
@@ -61,8 +61,8 @@
 :root {
 	
 	/* #FF0F00 in decimal RGB */
-  --main-color: rgb(225,15,0);
-  --main-color-rgb:225,15,0;
+  --main-color:#01465b;
+  --main-color-rgb:#01465b;
   
   /* #817E7E in decimal RGB */
   --color-two: rgb(129,126,126);
@@ -77,8 +77,8 @@
   --color-four-rgb:245,245,245;
   
   /* #DD1D26 in decimal RGB */
-  --color-five: rgb(221,29,38);
-  --color-five-rgb:221,29,38;
+  --color-five: #01465b;
+  --color-five-rgb:#01465b;
   
   /* #828A8D in decimal RGB */
   --color-six: rgb(130,138,141);
@@ -89,8 +89,8 @@
   --color-seven-rgb:255,96,108;
   
   /* #fc9837 in decimal RGB */
-  --color-eight: rgb(252,152,55);
-  --color-eight-rgb:252,152,55;
+  --color-eight: #f8cc0d;
+  --color-eight-rgb:#f8cc0d;
   
   /* #505050 in decimal RGB */
   --color-nine: rgb(80,80,80);
@@ -1020,7 +1020,7 @@ img{
 	font-family: var(--font-family-Outfit);
 	
 	background: var(--color-seven);
-	background: linear-gradient(to right, var(--color-seven) 0%, var(--color-eight) 100%);
+	background: linear-gradient(to right, #da740c 0%, #f8cc0d 100%);
 }
 
 .btn-style-one:before{
@@ -1038,7 +1038,7 @@ img{
 	z-index: 1;
 	
 	background: var(--color-eight);
-	background: linear-gradient(to right, var(--color-eight) 0%, var(--color-seven) 100%);
+	background: linear-gradient(to right, #da740c 0%, #f8cc0d 100%);
 }
 
 .btn-style-one:hover:before{
