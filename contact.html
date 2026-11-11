@@ -276,6 +276,53 @@
           transition: transform 300ms ease !important;
         }
       }
+
+      /* Google Maps Embed Section in contact.html */
+      .contact-section .map-box {
+        position: relative;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        width: 100%;
+        clear: both;
+      }
+
+      .contact-section .map-outer {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .contact-section .map-outer iframe {
+        display: block;
+        width: 100%;
+        height: 450px;
+        border: 0;
+      }
+
+      @media only screen and (max-width: 991px) {
+        .contact-section .map-box {
+          margin-top: 35px;
+          margin-bottom: 15px;
+        }
+        .contact-section .map-outer iframe {
+          height: 400px;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .contact-section .map-box {
+          margin-top: 25px;
+          margin-bottom: 10px;
+        }
+        .contact-section .map-outer {
+          border-radius: 8px;
+        }
+        .contact-section .map-outer iframe {
+          height: 350px !important;
+        }
+      }
     </style>
   </head>
 
@@ -738,122 +785,18 @@
             </div>
           </div>
 
-          <!-- Lower Box -->
-          <div class="lower-box">
-            <div class="row clearfix">
-              <!-- Video Column -->
-              <div class="video-column col-lg-4 col-md-12 col-sm-12">
-                <!-- Video Box -->
-                <div class="video-box">
-                  <figure class="video-image">
-                    <img
-                      class="transition-500ms"
-                      src="images/resource/video-image.jpg"
-                      alt=""
-                    />
-                  </figure>
-                  <a
-                    href="https://www.youtube.com/watch?v=kxPCFljwJws"
-                    class="lightbox-video overlay-box"
-                    ><span class="flaticon-media-play-symbol transition-900ms"
-                      ><i class="ripple"></i></span
-                  ></a>
-                </div>
-              </div>
-              <!-- Image Column -->
-              <div class="image-column col-lg-8 col-md-12 col-sm-12">
-                <div class="image">
-                  <img src="images/resource/contact-1.jpg" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Lower Content Box -->
-          <div class="lower-content-box">
-            <div class="row clearfix">
-              <div class="column col-lg-8 col-md-12 col-sm-12">
-                <h3>Let our investment management team</h3>
-                <p>
-                  We have covered many special events such as fireworks, fairs,
-                  parades, races, walks, awards ceremonies, experience the
-                  healing warmth of the ever-present sunshine,” says Ian Kerr,
-                  managing director. The white-beaches and tropical foliage in
-                  the heart of Negril is designed to provide a truly serene,
-                  intimate, and fashion shows, sport events, and even a memorial
-                  service.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Curabitur vulputate vestibulum Phasellus rho cus, eget viverra
-                  pretium, dolor tellus aliquet nunc, vitae ultricies erat elit
-                  eu lacus. Vestibulum
-                </p>
-              </div>
-              <div class="column col-lg-4 col-md-12 col-sm-12">
-                <!-- Accordion Box -->
-                <ul class="accordion-box style-three">
-                  <!--Block-->
-                  <li class="accordion block">
-                    <div class="acc-btn">
-                      <div class="icon-outer">
-                        <span class="icon icon-plus fa fa-plus"></span>
-                        <span class="icon icon-minus fa fa-minus"></span>
-                      </div>
-                      01. What made you look up this word?
-                    </div>
-                    <div class="acc-content">
-                      <div class="content">
-                        <div class="text">
-                          events such as fireworks, fairs, parades, races, walks
-                          awards ceremonies, tsto experience s, parades races,
-                          walks, awards ceremonies, tsto ex
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <!--Block-->
-                  <li class="accordion block">
-                    <div class="acc-btn active">
-                      <div class="icon-outer">
-                        <span class="icon icon-plus fa fa-plus"></span>
-                        <span class="icon icon-minus fa fa-minus"></span>
-                      </div>
-                      02. What made you look up this word?
-                    </div>
-                    <div class="acc-content current">
-                      <div class="content">
-                        <div class="text">
-                          events such as fireworks, fairs, parades, races, walks
-                          awards ceremonies, tsto experience s, parades races,
-                          walks, awards ceremonies, tsto ex
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-
-                  <!--Block-->
-                  <li class="accordion block">
-                    <div class="acc-btn">
-                      <div class="icon-outer">
-                        <span class="icon icon-plus fa fa-plus"></span>
-                        <span class="icon icon-minus fa fa-minus"></span>
-                      </div>
-                      03. What made you look up this word?
-                    </div>
-                    <div class="acc-content">
-                      <div class="content">
-                        <div class="text">
-                          events such as fireworks, fairs, parades, races, walks
-                          awards ceremonies, tsto experience s, parades races,
-                          walks, awards ceremonies, tsto ex
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+          <!-- Google Maps Section -->
+          <div class="map-box">
+            <div class="map-outer">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3118.7886531783956!2d76.95096617374698!3d8.498148897075191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bb004284e6bf%3A0x2d42f0a78ccc78e8!2sKalki%20Media%20Groups!5e1!3m2!1sen!2sin!4v1794401677703!5m2!1sen!2sin"
+                width="100%"
+                height="450"
+                style="border: 0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
             </div>
           </div>
         </div>
