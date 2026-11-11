@@ -114,6 +114,226 @@
 }
 </style>
 
+
+<!-- Our Works Section Styles -->
+<style>
+.our-works-gallery-section {
+	position: relative;
+	padding: 90px 0 95px;
+	background-color: #f8fafc;
+}
+.our-works-gallery-section .sec-title {
+	margin-bottom: 35px;
+}
+.our-works-gallery-section .sec-title .title {
+	color: var(--color-seven);
+	font-weight: 600;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+}
+.our-works-gallery-section .sec-title .text {
+	max-width: 780px;
+	margin: 15px auto 0;
+	color: var(--color-twentytwo);
+	font-size: var(--font-16);
+	line-height: 1.7;
+}
+.works-filter-nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 40px;
+}
+.works-filter-btn {
+	border: 1px solid #e2e8f0;
+	background: #ffffff;
+	color: #475569;
+	padding: 9px 22px;
+	border-radius: 30px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+	outline: none;
+}
+.works-filter-btn:hover {
+	color: var(--color-seven);
+	border-color: var(--color-seven);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(255, 114, 58, 0.18);
+}
+.works-filter-btn.active {
+	background: var(--color-seven);
+	color: #ffffff;
+	border-color: var(--color-seven);
+	box-shadow: 0 6px 18px rgba(255, 114, 58, 0.35);
+}
+.works-gallery-row {
+	margin-left: -12px;
+	margin-right: -12px;
+}
+.work-gallery-item {
+	padding: 12px;
+	margin-bottom: 10px;
+	transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.work-gallery-card {
+	background: #ffffff;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+	border: 1px solid #edf2f7;
+	transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.work-gallery-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+	border-color: rgba(255, 114, 58, 0.35);
+}
+.work-thumb-wrap {
+	position: relative;
+	width: 100%;
+	height: 240px;
+	overflow: hidden;
+	background: #f1f5f9;
+}
+.work-thumb-wrap img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	transition: transform 0.5s ease;
+}
+.work-gallery-card:hover .work-thumb-wrap img {
+	transform: scale(1.08);
+}
+.work-thumb-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(15, 23, 42, 0.55);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 0.35s ease;
+	z-index: 2;
+	text-decoration: none !important;
+}
+.work-gallery-card:hover .work-thumb-overlay {
+	opacity: 1;
+}
+.work-zoom-btn {
+	width: 48px;
+	height: 48px;
+	background: #ffffff;
+	color: var(--color-seven);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+	transform: scale(0.8);
+	transition: all 0.3s ease;
+}
+.work-zoom-btn:hover {
+	background: var(--color-seven);
+	color: #ffffff;
+	transform: scale(1.05);
+}
+.work-gallery-card:hover .work-zoom-btn {
+	transform: scale(1);
+}
+.work-client-tag {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	background: rgba(255, 255, 255, 0.95);
+	color: #1e293b;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 4px 10px;
+	border-radius: 20px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+	z-index: 3;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+.work-card-info {
+	padding: 16px 18px 18px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: space-between;
+}
+.work-category-badge {
+	color: var(--color-seven);
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	margin-bottom: 6px;
+	display: block;
+}
+.work-project-title {
+	font-size: 15px;
+	font-weight: 600;
+	color: #0f172a;
+	line-height: 1.4;
+	margin-bottom: 8px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	min-height: 42px;
+}
+.work-client-name {
+	font-size: 12.5px;
+	color: #64748b;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+.work-client-name i {
+	color: var(--color-seven);
+	font-size: 12px;
+}
+.works-load-more-wrap {
+	margin-top: 35px;
+}
+@media only screen and (max-width: 991px) {
+	.our-works-gallery-section {
+		padding: 70px 0 75px;
+	}
+	.work-thumb-wrap {
+		height: 220px;
+	}
+}
+@media only screen and (max-width: 575px) {
+	.our-works-gallery-section {
+		padding: 55px 0 60px;
+	}
+	.work-thumb-wrap {
+		height: 200px;
+	}
+	.works-filter-btn {
+		padding: 8px 16px;
+		font-size: 13px;
+	}
+}
+</style>
+
 </head>
 
 <body>
@@ -975,140 +1195,740 @@
 	</section>
 	<!-- End Project Section -->
 	
-	<!-- Printing Section -->
-	<section class="printing-section">
+	<!-- Printing / Our Works Section -->
+	<section class="printing-section our-works-gallery-section" id="our-works">
 		<div class="auto-container">
-			<div class="vector-icon-three" style="background-image: url(images/icons/vector-9.png)"></div>
-			<!-- Title Box -->
-			<div class="title-box">
-				<div class="circle-one"></div>
-				<div class="vector-icon-one" style="background-image: url(images/icons/vector-8.png)"></div>
-				<div class="vector-icon-two" style="background-image: url(images/icons/vector-8.png)"></div>
-				Design. <span>Printing</span>. Quality
-				<i>Design. Brand. Quality</i>
+			<!-- Section Title -->
+			<div class="sec-title centered">
+				<div class="title" style="color: var(--color-seven); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;">OUR WORKS</div>
+				<h2>Completed Projects &amp; <br><span>Client Showcases</span></h2>
+				<div class="text">Explore our advertising campaigns, custom signboards, LED displays, event branding, and commercial printing projects delivered for government departments, institutions, and corporate enterprises across Kerala.</div>
 			</div>
 			
-			<!-- Inner Container -->
-			<div class="inner-container">
-				<div class="pattern-layer" style="background-image: url(images/background/pattern-1.png)"></div>
-				<div class="print-carousel owl-carousel owl-theme">
-					<!-- Slide One -->
-					<div class="slide">
-						<div class="clearfix">
-							<!-- Print Block -->
-							<div class="print-block col-lg-6 col-md-6 col-sm-12">
-								<div class="inner-box">
-									<div class="image">
-										<div class="color-layer"></div>
-										<div class="tag">Before Service</div>
-										<a href="shop-detail.html"><img src="images/resource/print-1.png" alt="" /></a>
-									</div>
-								</div>
+			<!-- Works Filter Navigation -->
+			<div class="works-filter-nav d-flex justify-content-center align-items-center flex-wrap">
+				<button type="button" class="works-filter-btn active" data-filter="all">All Works</button>
+				<button type="button" class="works-filter-btn" data-filter="signage">Signage &amp; Displays</button>
+				<button type="button" class="works-filter-btn" data-filter="banners">Banners &amp; Backdrops</button>
+				<button type="button" class="works-filter-btn" data-filter="print">Printing &amp; Collateral</button>
+				<button type="button" class="works-filter-btn" data-filter="govt">Govt &amp; Institutional</button>
+			</div>
+			
+			<!-- Works Gallery Grid -->
+			<div class="row clearfix works-gallery-row">
+					<!-- Work Item 1: Kerala Police -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Police</span>
+								<img src="images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.05.42 PM.jpeg" alt="Kerala Police - Public Safety & Traffic Awareness Campaign" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.05.42 PM.jpeg" title="Kerala Police &ndash; Public Safety & Traffic Awareness Campaign">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
 							</div>
-							<!-- Print Block -->
-							<div class="print-block col-lg-6 col-md-6 col-sm-12">
-								<div class="inner-box">
-									<div class="image">
-										<div class="color-layer"></div>
-										<div class="tag">After Service</div>
-										<a href="shop-detail.html"><img src="images/resource/print-2.png" alt="" /></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Post Info -->
-						<div class="post-info">
-							Silk-screen printing
-							<div class="rating">
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="light fa fa-star"></span>
-								<span class="light fa fa-star"></span>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Public Safety & Traffic Awareness Campaign">Public Safety & Traffic Awareness Campaign</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Police</div>
 							</div>
 						</div>
 					</div>
-					
-					<!-- Slide Two -->
-					<div class="slide">
-						<div class="clearfix">
-							<!-- Print Block -->
-							<div class="print-block col-lg-6 col-md-6 col-sm-12">
-								<div class="inner-box">
-									<div class="image">
-										<div class="color-layer"></div>
-										<div class="tag">Before Service</div>
-										<a href="shop-detail.html"><img src="images/resource/print-1.png" alt="" /></a>
-									</div>
-								</div>
+					<!-- Work Item 2: Kerala Police -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Police</span>
+								<img src="images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.06.57 PM.jpeg" alt="Kerala Police - Police Station Information & Service Board" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.06.57 PM.jpeg" title="Kerala Police &ndash; Police Station Information & Service Board">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
 							</div>
-							<!-- Print Block -->
-							<div class="print-block col-lg-6 col-md-6 col-sm-12">
-								<div class="inner-box">
-									<div class="image">
-										<div class="color-layer"></div>
-										<div class="tag">After Service</div>
-										<a href="shop-detail.html"><img src="images/resource/print-2.png" alt="" /></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Post Info -->
-						<div class="post-info">
-							Silk-screen printing
-							<div class="rating">
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="light fa fa-star"></span>
-								<span class="light fa fa-star"></span>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Police Station Information & Service Board">Police Station Information & Service Board</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Police</div>
 							</div>
 						</div>
 					</div>
-					
-					<!-- Slide Three -->
-					<div class="slide">
-						<div class="clearfix">
-							<!-- Print Block -->
-							<div class="print-block col-lg-6 col-md-6 col-sm-12">
-								<div class="inner-box">
-									<div class="image">
-										<div class="color-layer"></div>
-										<div class="tag">Before Service</div>
-										<a href="shop-detail.html"><img src="images/resource/print-1.png" alt="" /></a>
-									</div>
-								</div>
+					<!-- Work Item 3: Kerala Police -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Police</span>
+								<img src="images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.11.28 PM.jpeg" alt="Kerala Police - Community Outreach & Vigilance Hoarding" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.11.28 PM.jpeg" title="Kerala Police &ndash; Community Outreach & Vigilance Hoarding">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
 							</div>
-							<!-- Print Block -->
-							<div class="print-block col-lg-6 col-md-6 col-sm-12">
-								<div class="inner-box">
-									<div class="image">
-										<div class="color-layer"></div>
-										<div class="tag">After Service</div>
-										<a href="shop-detail.html"><img src="images/resource/print-2.png" alt="" /></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Post Info -->
-						<div class="post-info">
-							Silk-screen printing
-							<div class="rating">
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-								<span class="light fa fa-star"></span>
-								<span class="light fa fa-star"></span>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Community Outreach & Vigilance Hoarding">Community Outreach & Vigilance Hoarding</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Police</div>
 							</div>
 						</div>
 					</div>
-					
-				</div>
+					<!-- Work Item 4: Southern Railway -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Southern Railway</span>
+								<img src="images/work/RAILWAY/1.jpg" alt="Southern Railway - Railway Station Platform Directional Signage" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/RAILWAY/1.jpg" title="Southern Railway &ndash; Railway Station Platform Directional Signage">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Railway Station Platform Directional Signage">Railway Station Platform Directional Signage</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Southern Railway</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 5: Southern Railway -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Southern Railway</span>
+								<img src="images/work/RAILWAY/2.jpg" alt="Southern Railway - Passenger Information & Safety Display Board" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/RAILWAY/2.jpg" title="Southern Railway &ndash; Passenger Information & Safety Display Board">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Passenger Information & Safety Display Board">Passenger Information & Safety Display Board</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Southern Railway</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 6: Southern Railway -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Southern Railway</span>
+								<img src="images/work/RAILWAY/3.jpg" alt="Southern Railway - Railway Terminal Awareness & Safety Campaign" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/RAILWAY/3.jpg" title="Southern Railway &ndash; Railway Terminal Awareness & Safety Campaign">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Railway Terminal Awareness & Safety Campaign">Railway Terminal Awareness & Safety Campaign</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Southern Railway</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 7: Trivandrum Corporation -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Trivandrum Corporation</span>
+								<img src="images/work/trivandrum Corporation/A.jfif" alt="Trivandrum Corporation - Clean City Green City Public Campaign Hoarding" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/trivandrum Corporation/A.jfif" title="Trivandrum Corporation &ndash; Clean City Green City Public Campaign Hoarding">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Clean City Green City Public Campaign Hoarding">Clean City Green City Public Campaign Hoarding</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Trivandrum Corporation</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 8: Trivandrum Corporation -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Trivandrum Corporation</span>
+								<img src="images/work/trivandrum Corporation/Screenshot 2026-11-07 165227.png" alt="Trivandrum Corporation - Smart City Trivandrum Project Exhibition Showcase" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/trivandrum Corporation/Screenshot 2026-11-07 165227.png" title="Trivandrum Corporation &ndash; Smart City Trivandrum Project Exhibition Showcase">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Smart City Trivandrum Project Exhibition Showcase">Smart City Trivandrum Project Exhibition Showcase</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Trivandrum Corporation</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 9: Trivandrum Corporation -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Trivandrum Corporation</span>
+								<img src="images/work/trivandrum Corporation/Screenshot 2026-11-07 172746.png" alt="Trivandrum Corporation - Urban Development & Civic Service Promotion" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/trivandrum Corporation/Screenshot 2026-11-07 172746.png" title="Trivandrum Corporation &ndash; Urban Development & Civic Service Promotion">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Urban Development & Civic Service Promotion">Urban Development & Civic Service Promotion</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Trivandrum Corporation</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 10: Bank of India -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="print">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Bank of India</span>
+								<img src="images/work/BANK OF INDIA/BROUCHER.jpg" alt="Bank of India - Banking Products & Services Tri-Fold Brochure" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/BANK OF INDIA/BROUCHER.jpg" title="Bank of India &ndash; Banking Products & Services Tri-Fold Brochure">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Printing & Collateral</span>
+								<h5 class="work-project-title" title="Banking Products & Services Tri-Fold Brochure">Banking Products & Services Tri-Fold Brochure</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Bank of India</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 11: Bank of India -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Bank of India</span>
+								<img src="images/work/BANK OF INDIA/STANDI.jpeg" alt="Bank of India - Branch Promotion Roll-Up Standee Banner" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/BANK OF INDIA/STANDI.jpeg" title="Bank of India &ndash; Branch Promotion Roll-Up Standee Banner">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Branch Promotion Roll-Up Standee Banner">Branch Promotion Roll-Up Standee Banner</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Bank of India</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 12: Bank of India -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="print">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Bank of India</span>
+								<img src="images/work/BANK OF INDIA/WhatsApp Image 2026-11-07 at 5.57.19 PM.jpeg" alt="Bank of India - Customer Scheme Promotional Display" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/BANK OF INDIA/WhatsApp Image 2026-11-07 at 5.57.19 PM.jpeg" title="Bank of India &ndash; Customer Scheme Promotional Display">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Printing & Collateral</span>
+								<h5 class="work-project-title" title="Customer Scheme Promotional Display">Customer Scheme Promotional Display</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Bank of India</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 13: Matsyafed Kerala -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Matsyafed Kerala</span>
+								<img src="images/work/Malsyafed/ARCH.JPG" alt="Matsyafed Kerala - Matsyafed Fresh Fish Mart Entrance Arch Sign" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Malsyafed/ARCH.JPG" title="Matsyafed Kerala &ndash; Matsyafed Fresh Fish Mart Entrance Arch Sign">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Matsyafed Fresh Fish Mart Entrance Arch Sign">Matsyafed Fresh Fish Mart Entrance Arch Sign</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Matsyafed Kerala</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 14: Matsyafed Kerala -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Matsyafed Kerala</span>
+								<img src="images/work/Malsyafed/backdrop.JPG" alt="Matsyafed Kerala - State Fisheries Inauguration Stage Backdrop" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Malsyafed/backdrop.JPG" title="Matsyafed Kerala &ndash; State Fisheries Inauguration Stage Backdrop">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="State Fisheries Inauguration Stage Backdrop">State Fisheries Inauguration Stage Backdrop</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Matsyafed Kerala</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 15: Matsyafed Kerala -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt print">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Matsyafed Kerala</span>
+								<img src="images/work/Malsyafed/badge.JPG" alt="Matsyafed Kerala - Official Identity Badges & Delegate Passes" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Malsyafed/badge.JPG" title="Matsyafed Kerala &ndash; Official Identity Badges & Delegate Passes">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Printing & Collateral</span>
+								<h5 class="work-project-title" title="Official Identity Badges & Delegate Passes">Official Identity Badges & Delegate Passes</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Matsyafed Kerala</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 16: Kerala Forest Dept -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Forest Dept</span>
+								<img src="images/work/FOREST/1.jpg" alt="Kerala Forest Dept - Wildlife Sanctuary Eco-Tourism Signboard" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/FOREST/1.jpg" title="Kerala Forest Dept &ndash; Wildlife Sanctuary Eco-Tourism Signboard">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Wildlife Sanctuary Eco-Tourism Signboard">Wildlife Sanctuary Eco-Tourism Signboard</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Forest Dept</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 17: Kerala Forest Dept -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Forest Dept</span>
+								<img src="images/work/FOREST/WhatsApp Image 2026-11-07 at 4.43.56 PM.jpeg" alt="Kerala Forest Dept - Forest Conservation Expo Exhibition Display" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/FOREST/WhatsApp Image 2026-11-07 at 4.43.56 PM.jpeg" title="Kerala Forest Dept &ndash; Forest Conservation Expo Exhibition Display">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Forest Conservation Expo Exhibition Display">Forest Conservation Expo Exhibition Display</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Forest Dept</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 18: Kerala Sports Council -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Sports Council</span>
+								<img src="images/work/Sports Council/SPORTS.jpg" alt="Kerala Sports Council - State Sports Championship Promotional Signage" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Sports Council/SPORTS.jpg" title="Kerala Sports Council &ndash; State Sports Championship Promotional Signage">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="State Sports Championship Promotional Signage">State Sports Championship Promotional Signage</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Sports Council</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 19: Kerala Sports Council -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Sports Council</span>
+								<img src="images/work/Sports Council/51bb7e65-4efe-491b-a2d2-c8f06b48c79b.jfif" alt="Kerala Sports Council - Sports Stadium Arena Hoarding & Branding" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Sports Council/51bb7e65-4efe-491b-a2d2-c8f06b48c79b.jfif" title="Kerala Sports Council &ndash; Sports Stadium Arena Hoarding & Branding">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Sports Stadium Arena Hoarding & Branding">Sports Stadium Arena Hoarding & Branding</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Sports Council</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 20: Kerala Sports Council -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Sports Council</span>
+								<img src="images/work/Sports Council/WhatsApp Image 2026-11-06 at 7.00.46 PM.jpeg" alt="Kerala Sports Council - Athletics Meet Stage Backdrop & Banners" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Sports Council/WhatsApp Image 2026-11-06 at 7.00.46 PM.jpeg" title="Kerala Sports Council &ndash; Athletics Meet Stage Backdrop & Banners">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Athletics Meet Stage Backdrop & Banners">Athletics Meet Stage Backdrop & Banners</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Sports Council</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 21: Kerala Tourism -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Tourism</span>
+								<img src="images/work/tourism/Screenshot 2026-11-07 174844.png" alt="Kerala Tourism - God’s Own Country Destination Promotion Board" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/tourism/Screenshot 2026-11-07 174844.png" title="Kerala Tourism &ndash; God’s Own Country Destination Promotion Board">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="God’s Own Country Destination Promotion Board">God’s Own Country Destination Promotion Board</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Tourism</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 22: Kerala Tourism -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Tourism</span>
+								<img src="images/work/tourism/Screenshot 2026-11-07 175036.png" alt="Kerala Tourism - Kerala Travel Mart Exhibition Campaign Banner" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/tourism/Screenshot 2026-11-07 175036.png" title="Kerala Tourism &ndash; Kerala Travel Mart Exhibition Campaign Banner">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Kerala Travel Mart Exhibition Campaign Banner">Kerala Travel Mart Exhibition Campaign Banner</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Tourism</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 23: National Employment Service -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">National Employment Service</span>
+								<img src="images/work/National Employment Service  (keralam)/back drop.jpg" alt="National Employment Service - Kerala Mega Job Fair Stage Backdrop & Hoarding" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/National Employment Service  (keralam)/back drop.jpg" title="National Employment Service &ndash; Kerala Mega Job Fair Stage Backdrop & Hoarding">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Kerala Mega Job Fair Stage Backdrop & Hoarding">Kerala Mega Job Fair Stage Backdrop & Hoarding</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> National Employment Service</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 24: National Employment Service -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">National Employment Service</span>
+								<img src="images/work/National Employment Service  (keralam)/board.jpg" alt="National Employment Service - District Employment Office Entrance Signboard" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/National Employment Service  (keralam)/board.jpg" title="National Employment Service &ndash; District Employment Office Entrance Signboard">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="District Employment Office Entrance Signboard">District Employment Office Entrance Signboard</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> National Employment Service</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 25: Excise Department -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Excise Department</span>
+								<img src="images/work/excise DEPARTMENT/A.jfif" alt="Excise Department - Vimukthi Anti-Narcotics Mission Hoarding" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/excise DEPARTMENT/A.jfif" title="Excise Department &ndash; Vimukthi Anti-Narcotics Mission Hoarding">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Vimukthi Anti-Narcotics Mission Hoarding">Vimukthi Anti-Narcotics Mission Hoarding</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Excise Department</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 26: Excise Department -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt print">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Excise Department</span>
+								<img src="images/work/excise DEPARTMENT/Screenshot 2026-10-06 184909.png" alt="Excise Department - Awareness Campaign Flex Banner & Posters" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/excise DEPARTMENT/Screenshot 2026-10-06 184909.png" title="Excise Department &ndash; Awareness Campaign Flex Banner & Posters">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Printing & Collateral</span>
+								<h5 class="work-project-title" title="Awareness Campaign Flex Banner & Posters">Awareness Campaign Flex Banner & Posters</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Excise Department</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 27: Hantex Handlooms -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Hantex Handlooms</span>
+								<img src="images/work/Hantex/WhatsApp Image 2026-11-07 at 4.29.25 PM.jpeg" alt="Hantex Handlooms - Hantex Festive Handloom Expo Signage" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Hantex/WhatsApp Image 2026-11-07 at 4.29.25 PM.jpeg" title="Hantex Handlooms &ndash; Hantex Festive Handloom Expo Signage">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Hantex Festive Handloom Expo Signage">Hantex Festive Handloom Expo Signage</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Hantex Handlooms</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 28: Hantex Handlooms -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Hantex Handlooms</span>
+								<img src="images/work/Hantex/WhatsApp Image 2026-11-07 at 4.38.20 PM.jpeg" alt="Hantex Handlooms - Handloom Showroom Stall Branding & Display" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Hantex/WhatsApp Image 2026-11-07 at 4.38.20 PM.jpeg" title="Hantex Handlooms &ndash; Handloom Showroom Stall Branding & Display">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Handloom Showroom Stall Branding & Display">Handloom Showroom Stall Branding & Display</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Hantex Handlooms</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 29: Kerala Library Council -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Library Council</span>
+								<img src="images/work/library council/a.jfif" alt="Kerala Library Council - State Book Festival Stage Backdrop" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/library council/a.jfif" title="Kerala Library Council &ndash; State Book Festival Stage Backdrop">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="State Book Festival Stage Backdrop">State Book Festival Stage Backdrop</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Library Council</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 30: Kerala Library Council -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt print">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Kerala Library Council</span>
+								<img src="images/work/library council/b.jfif" alt="Kerala Library Council - Vayana Dinam Reading Week Promotion Banner" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/library council/b.jfif" title="Kerala Library Council &ndash; Vayana Dinam Reading Week Promotion Banner">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Printing & Collateral</span>
+								<h5 class="work-project-title" title="Vayana Dinam Reading Week Promotion Banner">Vayana Dinam Reading Week Promotion Banner</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Kerala Library Council</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 31: Mohandas College -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Mohandas College</span>
+								<img src="images/work/Mohandas College/WhatsApp Image 2026-11-07 at 5.44.21 PM.jpeg" alt="Mohandas College - National Technology Symposium Main Backdrop" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Mohandas College/WhatsApp Image 2026-11-07 at 5.44.21 PM.jpeg" title="Mohandas College &ndash; National Technology Symposium Main Backdrop">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="National Technology Symposium Main Backdrop">National Technology Symposium Main Backdrop</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Mohandas College</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 32: Mohandas College -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Mohandas College</span>
+								<img src="images/work/Mohandas College/WhatsApp Image 2026-11-07 at 5.45.37 PM.jpeg" alt="Mohandas College - Campus Annual Tech Fest Event Signage" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/Mohandas College/WhatsApp Image 2026-11-07 at 5.45.37 PM.jpeg" title="Mohandas College &ndash; Campus Annual Tech Fest Event Signage">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Campus Annual Tech Fest Event Signage">Campus Annual Tech Fest Event Signage</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Mohandas College</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 33: Christ Nagar School -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Christ Nagar School</span>
+								<img src="images/work/chrisstnagar school/193390b3-b756-46eb-9eb1-24da66f15b28.jfif" alt="Christ Nagar School - School Jubilee & Annual Day Backdrop" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/chrisstnagar school/193390b3-b756-46eb-9eb1-24da66f15b28.jfif" title="Christ Nagar School &ndash; School Jubilee & Annual Day Backdrop">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="School Jubilee & Annual Day Backdrop">School Jubilee & Annual Day Backdrop</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Christ Nagar School</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 34: Christ Nagar School -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Christ Nagar School</span>
+								<img src="images/work/chrisstnagar school/a.jfif" alt="Christ Nagar School - School Sports Meet Entrance Banner" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/chrisstnagar school/a.jfif" title="Christ Nagar School &ndash; School Sports Meet Entrance Banner">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="School Sports Meet Entrance Banner">School Sports Meet Entrance Banner</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Christ Nagar School</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 35: State Resource Centre -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">State Resource Centre</span>
+								<img src="images/work/State Resorce/back drop.jpg" alt="State Resource Centre - National Education Seminar Conference Backdrop" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/State Resorce/back drop.jpg" title="State Resource Centre &ndash; National Education Seminar Conference Backdrop">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="National Education Seminar Conference Backdrop">National Education Seminar Conference Backdrop</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> State Resource Centre</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 36: State Resource Centre -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt print">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">State Resource Centre</span>
+								<img src="images/work/State Resorce/State Resorce.jpg" alt="State Resource Centre - Resource Training Program Material & Branding" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/State Resorce/State Resorce.jpg" title="State Resource Centre &ndash; Resource Training Program Material & Branding">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Printing & Collateral</span>
+								<h5 class="work-project-title" title="Resource Training Program Material & Branding">Resource Training Program Material & Branding</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> State Resource Centre</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 37: SEU Foundation -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="print">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">SEU Foundation</span>
+								<img src="images/work/seu/Screenshot 2026-10-23 170012.png" alt="SEU Foundation - Development Project Annual Report & Publication" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/seu/Screenshot 2026-10-23 170012.png" title="SEU Foundation &ndash; Development Project Annual Report & Publication">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Printing & Collateral</span>
+								<h5 class="work-project-title" title="Development Project Annual Report & Publication">Development Project Annual Report & Publication</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> SEU Foundation</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 38: SEU Foundation -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="banners">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">SEU Foundation</span>
+								<img src="images/work/seu/Screenshot 2026-10-23 183040.png" alt="SEU Foundation - Community Sanitation Project Exhibition Banner" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/seu/Screenshot 2026-10-23 183040.png" title="SEU Foundation &ndash; Community Sanitation Project Exhibition Banner">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Banners & Backdrops</span>
+								<h5 class="work-project-title" title="Community Sanitation Project Exhibition Banner">Community Sanitation Project Exhibition Banner</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> SEU Foundation</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 39: SEU Foundation -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="print">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">SEU Foundation</span>
+								<img src="images/work/seu/Screenshot 2026-10-24 110900.png" alt="SEU Foundation - Program Brochure & Information Folder Print" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/seu/Screenshot 2026-10-24 110900.png" title="SEU Foundation &ndash; Program Brochure & Information Folder Print">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Printing & Collateral</span>
+								<h5 class="work-project-title" title="Program Brochure & Information Folder Print">Program Brochure & Information Folder Print</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> SEU Foundation</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 40: Rajadhani Group -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">Rajadhani Group</span>
+								<img src="images/work/RAJADHANI/Screenshot 2026-11-07 174347.png" alt="Rajadhani Group - Rajadhani Corporate Branding & Outdoor Hoarding" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/RAJADHANI/Screenshot 2026-11-07 174347.png" title="Rajadhani Group &ndash; Rajadhani Corporate Branding & Outdoor Hoarding">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Rajadhani Corporate Branding & Outdoor Hoarding">Rajadhani Corporate Branding & Outdoor Hoarding</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> Rajadhani Group</div>
+							</div>
+						</div>
+					</div>
+					<!-- Work Item 41: KERAFED Kerala -->
+					<div class="work-gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" data-category="govt signage">
+						<div class="work-gallery-card">
+							<div class="work-thumb-wrap">
+								<span class="work-client-tag">KERAFED Kerala</span>
+								<img src="images/work/KERAFED/02.jpg" alt="KERAFED Kerala - Kera Coconut Products Promotional Flex Display" loading="lazy" />
+								<a class="lightbox-image work-thumb-overlay" href="images/work/KERAFED/02.jpg" title="KERAFED Kerala &ndash; Kera Coconut Products Promotional Flex Display">
+									<span class="work-zoom-btn"><i class="fa fa-search-plus"></i></span>
+								</a>
+							</div>
+							<div class="work-card-info">
+								<span class="work-category-badge">Signage & Displays</span>
+								<h5 class="work-project-title" title="Kera Coconut Products Promotional Flex Display">Kera Coconut Products Promotional Flex Display</h5>
+								<div class="work-client-name"><i class="fa fa-building-o"></i> KERAFED Kerala</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			
+			<!-- Load More Button -->
+			<div class="works-load-more-wrap text-center">
+				<button type="button" id="works-load-more-btn" class="theme-btn btn-style-one clearfix">
+					<span class="btn-wrap">
+						<span class="text-one">Load More Works</span>
+						<span class="text-two">Load More Works</span>
+					</span>
+					<span class="icon flaticon-right-arrow"></span>
+				</button>
 			</div>
 			
 		</div>
 	</section>
-	<!-- End Printing Section -->
+	<!-- End Printing / Our Works Section -->
 	
 	<!-- Services Section Two -->
 	<section class="services-section-two">
@@ -1991,6 +2811,67 @@
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"daf30b97c9e94fec9725b4f69e8dd5ef","r":1,"spa":2}' crossorigin="anonymous"></script>
+
+<!-- Our Works Gallery Filter and Load More Script -->
+<script>
+(function($) {
+	$(document).ready(function() {
+		var $items = $('.work-gallery-item');
+		var defaultBatch = 12;
+		var currentFilter = 'all';
+		var visibleCount = defaultBatch;
+
+		function refreshLightbox() {
+			if ($.fn.magnificPopup) {
+				$('.work-gallery-card a.lightbox-image').magnificPopup({
+					type: 'image',
+					gallery: {
+						enabled: true
+					}
+				});
+			}
+		}
+
+		function updateGallery() {
+			var $matching = $items.filter(function() {
+				if (currentFilter === 'all') return true;
+				var cats = ($(this).attr('data-category') || '').split(' ');
+				return cats.indexOf(currentFilter) !== -1;
+			});
+
+			$items.hide();
+			$matching.slice(0, visibleCount).fadeIn(350);
+
+			if ($matching.length <= visibleCount) {
+				$('#works-load-more-btn').hide();
+			} else {
+				$('#works-load-more-btn').show();
+			}
+
+			refreshLightbox();
+		}
+
+		// Filter button click
+		$('.works-filter-btn').on('click', function() {
+			$('.works-filter-btn').removeClass('active');
+			$(this).addClass('active');
+			currentFilter = $(this).attr('data-filter');
+			visibleCount = (currentFilter === 'all') ? defaultBatch : 999;
+			updateGallery();
+		});
+
+		// Load more button click
+		$('#works-load-more-btn').on('click', function(e) {
+			e.preventDefault();
+			visibleCount += 12;
+			updateGallery();
+		});
+
+		// Initialize gallery view
+		updateGallery();
+	});
+})(jQuery);
+</script>
 </body>
 
 <!-- Mirrored from https://html.themexriver.com/prinox/index.html by HTTrack Website Copier/3.x [XR&CO], Tue, 10 Nov 2026 12:03:23 GMT -->
