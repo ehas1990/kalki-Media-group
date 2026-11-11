@@ -743,7 +743,7 @@
         width: 100%;
       }
 
-      /* Responsive Grid Centering */
+      /* Responsive Layout: Desktop & Tablet Grids Preserved */
       @media only screen and (min-width: 992px) {
         .services-section .inner-container .service-block {
           width: 25% !important;
@@ -751,7 +751,7 @@
           flex: 0 0 25% !important;
         }
       }
-      @media only screen and (min-width: 576px) and (max-width: 991px) {
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
         .services-section .inner-container .service-block {
           width: 50% !important;
           max-width: 50% !important;
@@ -759,16 +759,185 @@
           padding: 0 15px;
         }
       }
-      @media only screen and (max-width: 575px) {
-        .services-section .inner-container .service-block {
+
+      /* Mobile Only Responsive Container Slider (max-width: 767px) */
+      @media only screen and (max-width: 767px) {
+        .services-section {
+          overflow: hidden !important;
+          padding: 55px 0 45px !important;
+        }
+
+        .services-section .auto-container {
+          max-width: 100% !important;
+          width: 100% !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          margin: 0 auto !important;
+        }
+
+        .services-section .sec-title {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+          margin-bottom: 30px !important;
+        }
+
+        .services-section .sec-title .text {
+          font-size: 14.5px !important;
+          line-height: 1.6 !important;
+        }
+
+        .services-section .inner-container {
+          position: relative !important;
           width: 100% !important;
           max-width: 100% !important;
-          flex: 0 0 100% !important;
-          padding: 0 10px;
+          margin: 0 !important;
+          overflow: visible !important;
         }
-        .services-section .auto-container {
-          padding-left: 15px;
-          padding-right: 15px;
+
+        /* Horizontal Slider Track */
+        .services-section .inner-container .row,
+        .services-section .services-slider-row {
+          display: flex !important;
+          flex-direction: row !important;
+          flex-wrap: nowrap !important;
+          justify-content: flex-start !important;
+          align-items: stretch !important;
+          overflow-x: auto !important;
+          overflow-y: hidden !important;
+          scroll-snap-type: x mandatory !important;
+          scroll-behavior: smooth !important;
+          -webkit-overflow-scrolling: touch !important;
+          gap: 10px !important;
+          padding: 10px 20px 20px 20px !important;
+          margin: 0 !important;
+          scrollbar-width: none !important;
+          -ms-overflow-style: none !important;
+          touch-action: pan-x pan-y !important;
+          cursor: grab;
+        }
+
+        .services-section .inner-container .row:active,
+        .services-section .services-slider-row:active {
+          cursor: grabbing;
+        }
+
+        .services-section .inner-container .row::-webkit-scrollbar,
+        .services-section .services-slider-row::-webkit-scrollbar {
+          display: none !important;
+          width: 0 !important;
+          height: 0 !important;
+        }
+
+        /* 
+          Slider Card Geometry:
+          - Gap between cards: 10px
+          - Container left & right padding: 20px (10px preview + 10px gap)
+          - Card Width: calc(100vw - 40px)
+          Result:
+          When a card is active in the center:
+          Left edge: exactly 10px of previous container visible + 10px gap
+          Center: active container fully visible and centrally aligned
+          Right edge: 10px gap + exactly 10px of next container visible
+          [ Previous 10px ] [ CENTER ACTIVE CONTAINER ] [ Next 10px ]
+        */
+        .services-section .inner-container .service-block {
+          flex: 0 0 calc(100vw - 40px) !important;
+          width: calc(100vw - 40px) !important;
+          max-width: calc(100vw - 40px) !important;
+          min-width: calc(100vw - 40px) !important;
+          margin-bottom: 0 !important;
+          padding: 0 !important;
+          scroll-snap-align: center !important;
+          scroll-snap-stop: always !important;
+          box-sizing: border-box !important;
+          transition: opacity 300ms ease;
+          opacity: 0.6;
+          user-select: none;
+        }
+
+        /* Active Center Container as Main Focus */
+        .services-section .inner-container .service-block.is-active {
+          opacity: 1 !important;
+        }
+
+        /* Card Container Styling */
+        .services-section .service-block .inner-box {
+          position: relative;
+          background: #ffffff;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          border-radius: 12px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+          padding: 24px 20px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          transition: border-color 300ms ease, box-shadow 300ms ease;
+          box-sizing: border-box;
+        }
+
+        .services-section .service-block.is-active .inner-box {
+          border-color: rgba(218, 116, 12, 0.35);
+          box-shadow: 0 8px 24px rgba(218, 116, 12, 0.09), 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .services-section .service-block .icon {
+          font-size: 44px;
+          margin-bottom: 6px;
+        }
+
+        .services-section .service-block h6 {
+          font-size: 19px;
+          margin-top: 10px;
+          margin-bottom: 8px;
+        }
+
+        .services-section .service-block .text {
+          max-width: 100% !important;
+          color: #64748b;
+          font-size: 14px;
+          line-height: 1.6;
+          margin-top: 5px;
+        }
+
+        .services-section .button-box {
+          margin-top: 25px !important;
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+
+        /* Mobile Pagination Dots */
+        .services-mobile-dots {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 7px;
+          margin: 18px 0 5px;
+          width: 100%;
+        }
+
+        .services-mobile-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #cbd5e1;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          transition: all 300ms ease;
+          outline: none;
+        }
+
+        .services-mobile-dot.active {
+          width: 24px;
+          border-radius: 10px;
+          background: linear-gradient(to right, #da740c 0%, #f8cc0d 100%);
+        }
+      }
+
+      @media only screen and (min-width: 768px) {
+        .services-mobile-dots {
+          display: none !important;
         }
       }
     </style>
@@ -1507,7 +1676,7 @@
       <!-- End Main Section -->
 
       <!-- Services Section -->
-      <section class="services-section">
+      <section class="services-section" id="services-section">
         <div class="auto-container">
           <!-- Sec Title -->
           <div class="sec-title centered" style="margin-bottom: 50px">
@@ -1536,7 +1705,7 @@
           </div>
 
           <div class="inner-container">
-            <div class="row clearfix">
+            <div class="row clearfix services-slider-row">
               <!-- Service Block 01 -->
               <div class="service-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
@@ -3419,6 +3588,159 @@
                 enabled: true,
               },
             });
+          }
+        });
+      })(jQuery);
+    </script>
+
+    <!-- Mobile Only Services Container Slider Controller -->
+    <script>
+      (function ($) {
+        $(document).ready(function () {
+          var $section = $(".services-section");
+          if (!$section.length) return;
+
+          var $row = $section.find(".services-slider-row");
+          var $blocks = $row.find(".service-block");
+          if (!$row.length || !$blocks.length) return;
+
+          var row = $row[0];
+          var $dotsContainer = null;
+          var ticking = false;
+
+          function initOrUpdateSlider() {
+            var isMobile = window.innerWidth <= 767;
+
+            if (!isMobile) {
+              $blocks.removeClass("is-active");
+              if ($dotsContainer) {
+                $dotsContainer.hide();
+              }
+              return;
+            }
+
+            // Create pagination dots if not yet created
+            if (!$dotsContainer) {
+              $dotsContainer = $('<div class="services-mobile-dots"></div>');
+              $blocks.each(function (index) {
+                $dotsContainer.append(
+                  '<button type="button" class="services-mobile-dot' +
+                    (index === 0 ? " active" : "") +
+                    '" data-index="' +
+                    index +
+                    '" aria-label="Go to service ' +
+                    (index + 1) +
+                    '"></button>'
+                );
+              });
+              $section.find(".inner-container").after($dotsContainer);
+
+              $dotsContainer.on("click", ".services-mobile-dot", function () {
+                var idx = parseInt($(this).data("index"), 10);
+                var targetBlock = $blocks[idx];
+                if (targetBlock) {
+                  var targetScroll =
+                    targetBlock.offsetLeft -
+                    (row.clientWidth - targetBlock.offsetWidth) / 2;
+                  row.scrollTo({ left: targetScroll, behavior: "smooth" });
+                }
+              });
+            } else {
+              $dotsContainer.show();
+            }
+
+            updateActiveSlide();
+          }
+
+          function updateActiveSlide() {
+            if (window.innerWidth > 767) return;
+
+            var rowCenter = row.scrollLeft + row.clientWidth / 2;
+            var closestIdx = 0;
+            var closestDist = Infinity;
+
+            $blocks.each(function (idx) {
+              var blockCenter = this.offsetLeft + this.offsetWidth / 2;
+              var dist = Math.abs(blockCenter - rowCenter);
+              if (dist < closestDist) {
+                closestDist = dist;
+                closestIdx = idx;
+              }
+            });
+
+            $blocks.each(function (idx) {
+              if (idx === closestIdx) {
+                $(this).addClass("is-active");
+              } else {
+                $(this).removeClass("is-active");
+              }
+            });
+
+            if ($dotsContainer) {
+              $dotsContainer.find(".services-mobile-dot").each(function (idx) {
+                if (idx === closestIdx) {
+                  $(this).addClass("active");
+                } else {
+                  $(this).removeClass("active");
+                }
+              });
+            }
+          }
+
+          // Native scroll listener with RAF throttling
+          row.addEventListener(
+            "scroll",
+            function () {
+              if (!ticking) {
+                window.requestAnimationFrame(function () {
+                  updateActiveSlide();
+                  ticking = false;
+                });
+                ticking = true;
+              }
+            },
+            { passive: true }
+          );
+
+          // Desktop mouse drag support for easy testing
+          var isDown = false;
+          var startX, startScrollLeft;
+
+          row.addEventListener("mousedown", function (e) {
+            if (window.innerWidth > 767) return;
+            isDown = true;
+            startX = e.pageX - row.offsetLeft;
+            startScrollLeft = row.scrollLeft;
+          });
+
+          window.addEventListener("mouseup", function () {
+            isDown = false;
+          });
+
+          row.addEventListener("mousemove", function (e) {
+            if (!isDown || window.innerWidth > 767) return;
+            e.preventDefault();
+            var x = e.pageX - row.offsetLeft;
+            var walk = (x - startX) * 1.4;
+            row.scrollLeft = startScrollLeft - walk;
+          });
+
+          // Run on init and window resize
+          initOrUpdateSlider();
+          $(window).on("resize orientationchange", function () {
+            initOrUpdateSlider();
+          });
+
+          if (window.location.hash === "#services-section") {
+            var el = document.getElementById("services-section");
+            if (el) {
+              var sRow = el.querySelector(".services-slider-row");
+              if (sRow) {
+                sRow.scrollIntoView({ block: "center" });
+              } else {
+                el.scrollIntoView();
+              }
+            }
           }
         });
       })(jQuery);
