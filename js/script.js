@@ -1041,4 +1041,9 @@
 		sortableMasonry();
 	});	
 
+	// Copyright Year
+	if($('#copyright-year').length || $('.copyright-year').length){
+		$('#copyright-year, .copyright-year').text(new Date().getFullYear());
+	}
+
 })(window.jQuery);
