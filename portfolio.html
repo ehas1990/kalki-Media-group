@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Kalki Media Groups | Our Project</title>
+    <title>Kalki Media Groups | Our Portfolio</title>
     <!-- Stylesheets -->
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
@@ -42,6 +42,454 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
+
+    <!-- Portfolio Gallery Custom Styles -->
+    <style>
+      .portfolio-gallery-section {
+        position: relative;
+        padding: 50px 0 70px 0;
+      }
+      .portfolio-filter-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto 35px auto;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Desktop, Laptop & Tablet: Wrapping row, NO horizontal scrolling, NO scrollbars */
+      .portfolio-tabs-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px 12px;
+        overflow: visible;
+        padding: 6px 0 16px 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .portfolio-tab-btn {
+        display: inline-block;
+        white-space: nowrap;
+        font-family: var(--font-family-Outfit, "Outfit", sans-serif);
+        font-size: 13.5px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        padding: 10px 22px;
+        border-radius: 30px;
+        background-color: #f7f8f9;
+        color: #2b2b2b;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        outline: none;
+        transition: all 250ms ease;
+        user-select: none;
+        box-sizing: border-box;
+      }
+      .portfolio-tab-btn:hover {
+        color: #da740c;
+        background-color: rgba(218, 116, 12, 0.08);
+        border-color: #da740c;
+        transform: translateY(-2px);
+      }
+      .portfolio-tab-btn.active {
+        background: linear-gradient(to right, #da740c 0%, #f8cc0d 100%);
+        color: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 6px 16px rgba(218, 116, 12, 0.35);
+        transform: translateY(-2px);
+      }
+
+      /* Mobile Only (max-width: 767px): Single horizontal row, touch scroll, NO visible scrollbar */
+      @media (max-width: 767px) {
+        .portfolio-filter-wrapper {
+          overflow: hidden;
+          width: 100%;
+          margin-bottom: 25px;
+        }
+        .portfolio-tabs-nav {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 10px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-behavior: smooth;
+          padding: 6px 10px 12px 10px;
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE and Edge */
+        }
+        .portfolio-tabs-nav::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera */
+          width: 0;
+          height: 0;
+        }
+        .portfolio-tab-btn {
+          flex: 0 0 auto;
+          white-space: nowrap;
+          font-size: 12.5px;
+          padding: 8px 18px;
+        }
+      }
+
+      /* Gallery Grid: Desktop 4 cols, Tablet 3 cols, Mobile 2 cols */
+      .portfolio-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        opacity: 1;
+        transition: opacity 220ms ease;
+      }
+      .portfolio-gallery-grid.grid-fading {
+        opacity: 0;
+      }
+      @media (max-width: 1199px) {
+        .portfolio-gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+      }
+      @media (max-width: 768px) {
+        .portfolio-gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
+      }
+      @media (max-width: 480px) {
+        .portfolio-gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+      }
+
+      /* Card Styling */
+      .portfolio-item-card {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        cursor: pointer;
+        transition:
+          transform 300ms ease,
+          box-shadow 300ms ease;
+        aspect-ratio: 4 / 3;
+      }
+      .portfolio-item-card:hover,
+      .portfolio-item-card:focus {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+        outline: none;
+      }
+      .portfolio-item-card .card-img-wrap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+      .portfolio-item-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 450ms ease;
+      }
+      .portfolio-item-card:hover img,
+      .portfolio-item-card:focus img {
+        transform: scale(1.08);
+      }
+      .portfolio-item-card .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.78) 0%,
+          rgba(0, 0, 0, 0.15) 50%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 280ms ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 16px;
+        box-sizing: border-box;
+      }
+      .portfolio-item-card:hover .card-overlay,
+      .portfolio-item-card:focus .card-overlay {
+        opacity: 1;
+      }
+      .portfolio-item-card .zoom-btn {
+        align-self: flex-end;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(to right, #da740c, #f8cc0d);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        transform: scale(0.85);
+        transition: transform 250ms ease;
+      }
+      .portfolio-item-card:hover .zoom-btn,
+      .portfolio-item-card:focus .zoom-btn {
+        transform: scale(1);
+      }
+      .portfolio-item-card .card-meta {
+        color: #ffffff;
+        transform: translateY(8px);
+        transition: transform 280ms ease;
+      }
+      .portfolio-item-card:hover .card-meta,
+      .portfolio-item-card:focus .card-meta {
+        transform: translateY(0);
+      }
+      .portfolio-item-card .card-client {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: #f8cc0d;
+        margin-bottom: 2px;
+      }
+      .portfolio-item-card .card-title {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1.3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* Empty State */
+      .portfolio-empty-state {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 70px 20px;
+        background: #fdfdfd;
+        border-radius: 12px;
+        border: 1px dashed rgba(0, 0, 0, 0.12);
+      }
+      .portfolio-empty-state p {
+        font-family: var(--font-family-Outfit, "Outfit", sans-serif);
+        font-size: 16px;
+        font-weight: 500;
+        color: #666666;
+        margin: 0;
+      }
+
+      /* Read More Button */
+      .portfolio-readmore-wrap {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+      .portfolio-readmore-btn {
+        display: inline-block;
+        font-family: var(--font-family-Outfit, "Outfit", sans-serif);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #ffffff;
+        padding: 13px 38px;
+        border-radius: 30px;
+        border: none;
+        background: linear-gradient(to right, #da740c 0%, #f8cc0d 100%);
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 4px 15px rgba(218, 116, 12, 0.35);
+        transition: all 300ms ease;
+        user-select: none;
+      }
+      .portfolio-readmore-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px rgba(218, 116, 12, 0.45);
+      }
+      .portfolio-readmore-btn:active {
+        transform: translateY(-1px);
+      }
+
+      /* Lightbox Overlay */
+      .portfolio-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 250ms ease;
+      }
+      .portfolio-lightbox.active {
+        display: flex;
+        opacity: 1;
+      }
+      .lightbox-backdrop {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(10, 10, 10, 0.93);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+      .lightbox-container {
+        position: relative;
+        z-index: 2;
+        width: 94%;
+        max-width: 1200px;
+        height: 92vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      .lightbox-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox-image-wrap {
+        position: relative;
+        max-width: 100%;
+        max-height: calc(92vh - 65px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox-img {
+        max-width: 100%;
+        max-height: calc(92vh - 65px);
+        object-fit: contain;
+        border-radius: 6px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.65);
+        user-select: none;
+        transition: transform 200ms ease;
+      }
+      .lightbox-footer {
+        width: 100%;
+        max-width: 900px;
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #ffffff;
+        font-family: var(--font-family-Outfit, "Outfit", sans-serif);
+        padding: 0 12px;
+        box-sizing: border-box;
+      }
+      .lightbox-caption {
+        font-size: 15px;
+        font-weight: 500;
+        color: #f5f5f5;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-right: 15px;
+      }
+      .lightbox-counter {
+        font-size: 14px;
+        font-weight: 600;
+        color: #f8cc0d;
+        flex-shrink: 0;
+      }
+      .lightbox-btn {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 200ms ease;
+        z-index: 10;
+        outline: none;
+      }
+      .lightbox-btn:hover {
+        background: linear-gradient(to right, #da740c, #f8cc0d);
+        border-color: transparent;
+        color: #ffffff;
+        transform: scale(1.1);
+      }
+      .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 44px;
+        height: 44px;
+        font-size: 26px;
+        line-height: 1;
+      }
+      .lightbox-prev {
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+      }
+      .lightbox-prev:hover {
+        transform: translateY(-50%) scale(1.1);
+      }
+      .lightbox-next {
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+      }
+      .lightbox-next:hover {
+        transform: translateY(-50%) scale(1.1);
+      }
+      @media (max-width: 768px) {
+        .lightbox-prev {
+          left: 6px;
+          width: 38px;
+          height: 38px;
+          font-size: 16px;
+        }
+        .lightbox-next {
+          right: 6px;
+          width: 38px;
+          height: 38px;
+          font-size: 16px;
+        }
+        .lightbox-close {
+          top: 6px;
+          right: 6px;
+          width: 38px;
+          height: 38px;
+          font-size: 22px;
+        }
+        .lightbox-caption {
+          font-size: 13px;
+        }
+        .lightbox-counter {
+          font-size: 12px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -108,27 +556,57 @@
                               <div class="mega-menu-col">
                                 <ul class="mega-menu-list">
                                   <li>
-                                    <a href="/letter-cutting.html" class="mega-service-link">
-                                      <span class="service-icon"><i class="flaticon-pencil-and-ruler"></i></span>
-                                      <span class="service-title">Letter Cutting</span>
+                                    <a
+                                      href="/letter-cutting.html"
+                                      class="mega-service-link"
+                                    >
+                                      <span class="service-icon"
+                                        ><i
+                                          class="flaticon-pencil-and-ruler"
+                                        ></i
+                                      ></span>
+                                      <span class="service-title"
+                                        >Letter Cutting</span
+                                      >
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="/led-board.html" class="mega-service-link">
-                                      <span class="service-icon"><i class="flaticon-bulb"></i></span>
-                                      <span class="service-title">LED Board</span>
+                                    <a
+                                      href="/led-board.html"
+                                      class="mega-service-link"
+                                    >
+                                      <span class="service-icon"
+                                        ><i class="flaticon-bulb"></i
+                                      ></span>
+                                      <span class="service-title"
+                                        >LED Board</span
+                                      >
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="/printing.html" class="mega-service-link">
-                                      <span class="service-icon"><i class="flaticon-printing"></i></span>
-                                      <span class="service-title">Printing</span>
+                                    <a
+                                      href="/printing.html"
+                                      class="mega-service-link"
+                                    >
+                                      <span class="service-icon"
+                                        ><i class="flaticon-printing"></i
+                                      ></span>
+                                      <span class="service-title"
+                                        >Printing</span
+                                      >
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="/screen-print.html" class="mega-service-link">
-                                      <span class="service-icon"><i class="flaticon-t-shirt"></i></span>
-                                      <span class="service-title">Screen Print</span>
+                                    <a
+                                      href="/screen-print.html"
+                                      class="mega-service-link"
+                                    >
+                                      <span class="service-icon"
+                                        ><i class="flaticon-t-shirt"></i
+                                      ></span>
+                                      <span class="service-title"
+                                        >Screen Print</span
+                                      >
                                     </a>
                                   </li>
                                 </ul>
@@ -136,26 +614,48 @@
                               <div class="mega-menu-col">
                                 <ul class="mega-menu-list">
                                   <li>
-                                    <a href="/frame.html" class="mega-service-link">
-                                      <span class="service-icon"><i class="flaticon-art-museum"></i></span>
+                                    <a
+                                      href="/frame.html"
+                                      class="mega-service-link"
+                                    >
+                                      <span class="service-icon"
+                                        ><i class="flaticon-art-museum"></i
+                                      ></span>
                                       <span class="service-title">Frame</span>
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="/offset.html" class="mega-service-link">
-                                      <span class="service-icon"><i class="flaticon-offset"></i></span>
+                                    <a
+                                      href="/offset.html"
+                                      class="mega-service-link"
+                                    >
+                                      <span class="service-icon"
+                                        ><i class="flaticon-offset"></i
+                                      ></span>
                                       <span class="service-title">Offset</span>
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="/paintings.html" class="mega-service-link">
-                                      <span class="service-icon"><i class="flaticon-branding"></i></span>
-                                      <span class="service-title">Paintings</span>
+                                    <a
+                                      href="/paintings.html"
+                                      class="mega-service-link"
+                                    >
+                                      <span class="service-icon"
+                                        ><i class="flaticon-branding"></i
+                                      ></span>
+                                      <span class="service-title"
+                                        >Paintings</span
+                                      >
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="/seal.html" class="mega-service-link">
-                                      <span class="service-icon"><i class="flaticon-medal"></i></span>
+                                    <a
+                                      href="/seal.html"
+                                      class="mega-service-link"
+                                    >
+                                      <span class="service-icon"
+                                        ><i class="flaticon-medal"></i
+                                      ></span>
                                       <span class="service-title">Seal</span>
                                     </a>
                                   </li>
@@ -165,7 +665,9 @@
                           </li>
                         </ul>
                       </li>
-                      <li><a href="project.html">Portfolio</a></li>
+                      <li class="current">
+                        <a href="portfolio.html">Portfolio</a>
+                      </li>
                       <li><a href="contact.html">Contact</a></li>
                     </ul>
                   </div>
@@ -277,179 +779,429 @@
             </div>
             <div class="icon-four" data-depth="0.10"></div>
           </div>
-          <h2>Our Project</h2>
+          <h2>Our Portfolio</h2>
           <ul class="bread-crumb clearfix">
             <li><a href="index.html">Home</a></li>
-            <li>Pages</li>
-            <li>Project</li>
+            <li>Portfolio</li>
           </ul>
         </div>
       </section>
       <!-- End Page Title -->
 
-      <!-- Project Page Section -->
-      <div class="project-page-section">
+      <!-- Portfolio Page Section -->
+      <div class="project-page-section portfolio-gallery-section">
         <div class="auto-container">
-          <div class="inner-container">
-            <div class="masonry-items-container-two row clearfix">
-              <!-- Project Block -->
-              <div
-                class="project-block masonry-item col-lg-6 col-md-6 col-sm-12"
+          <!-- Client Filter Tabs -->
+          <div class="portfolio-filter-wrapper">
+            <div class="portfolio-tabs-nav" id="portfolioTabsNav">
+              <button
+                type="button"
+                class="portfolio-tab-btn active"
+                data-client="BANK OF INDIA"
               >
-                <div class="inner-box">
-                  <div class="image">
-                    <a href="project-detail.html"
-                      ><img src="images/gallery/29.jpg" alt=""
-                    /></a>
-                    <div class="content">
-                      <h6>
-                        <a href="project-detail.html">Silk-screen printing</a>
-                      </h6>
-                      <a
-                        class="arrow flaticon-right-arrow"
-                        href="project-detail.html"
-                      ></a>
-                    </div>
+                BANK OF INDIA
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="CHRISTNAGAR SCHOOL"
+              >
+                CHRISTNAGAR SCHOOL
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="EXCISE DEPARTMENT"
+              >
+                EXCISE DEPARTMENT
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="FOREST"
+              >
+                FOREST
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="HANTEX"
+              >
+                HANTEX
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="KERAFED"
+              >
+                KERAFED
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="KERALA POLICE"
+              >
+                KERALA POLICE
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="LIBRARY COUNCIL"
+              >
+                LIBRARY COUNCIL
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="MALSYAFED"
+              >
+                MALSYAFED
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="MOHANDAS COLLEGE"
+              >
+                MOHANDAS COLLEGE
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="NATIONAL EMPLOYMENT SERVICE (KERALAM)"
+              >
+                NATIONAL EMPLOYMENT SERVICE (KERALAM)
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="RAILWAY"
+              >
+                RAILWAY
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="RAJADHANI"
+              >
+                RAJADHANI
+              </button>
+              <button type="button" class="portfolio-tab-btn" data-client="SEU">
+                SEU
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="SPORTS COUNCIL"
+              >
+                SPORTS COUNCIL
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="STATE RESOURCE"
+              >
+                STATE RESOURCE
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="TOURISM"
+              >
+                TOURISM
+              </button>
+              <button
+                type="button"
+                class="portfolio-tab-btn"
+                data-client="TRIVANDRUM CORPORATION"
+              >
+                TRIVANDRUM CORPORATION
+              </button>
+            </div>
+          </div>
+
+          <!-- Gallery Grid -->
+          <div class="portfolio-gallery-grid" id="portfolioGalleryGrid">
+            <div
+              class="portfolio-item-card"
+              data-index="0"
+              tabindex="0"
+              role="button"
+              aria-label="View BANK OF INDIA - a5 newx"
+            >
+              <div class="card-img-wrap">
+                <img
+                  src="images/work/BANK%20OF%20INDIA/a5%20newx.jpg"
+                  alt="BANK OF INDIA - a5 newx"
+                  loading="lazy"
+                />
+                <div class="card-overlay">
+                  <span class="zoom-btn"
+                    ><i class="fa fa-search-plus"></i
+                  ></span>
+                  <div class="card-meta">
+                    <div class="card-client">BANK OF INDIA</div>
+                    <div class="card-title">a5 newx</div>
                   </div>
                 </div>
               </div>
-
-              <!-- Project Block -->
-              <div
-                class="project-block masonry-item col-lg-6 col-md-6 col-sm-12"
-              >
-                <div class="inner-box">
-                  <div class="image">
-                    <a href="project-detail.html"
-                      ><img src="images/gallery/30.jpg" alt=""
-                    /></a>
-                    <div class="content">
-                      <h6>
-                        <a href="project-detail.html">Silk-screen printing</a>
-                      </h6>
-                      <a
-                        class="arrow flaticon-right-arrow"
-                        href="project-detail.html"
-                      ></a>
-                    </div>
+            </div>
+            <div
+              class="portfolio-item-card"
+              data-index="1"
+              tabindex="0"
+              role="button"
+              aria-label="View BANK OF INDIA - BROUCHER"
+            >
+              <div class="card-img-wrap">
+                <img
+                  src="images/work/BANK%20OF%20INDIA/BROUCHER.jpg"
+                  alt="BANK OF INDIA - BROUCHER"
+                  loading="lazy"
+                />
+                <div class="card-overlay">
+                  <span class="zoom-btn"
+                    ><i class="fa fa-search-plus"></i
+                  ></span>
+                  <div class="card-meta">
+                    <div class="card-client">BANK OF INDIA</div>
+                    <div class="card-title">BROUCHER</div>
                   </div>
                 </div>
               </div>
-
-              <!-- Project Block -->
-              <div
-                class="project-block masonry-item col-lg-3 col-md-6 col-sm-12"
-              >
-                <div class="inner-box">
-                  <div class="image">
-                    <a href="project-detail.html"
-                      ><img src="images/gallery/31.jpg" alt=""
-                    /></a>
-                    <div class="content">
-                      <h6>
-                        <a href="project-detail.html">Silk-screen printing</a>
-                      </h6>
-                      <a
-                        class="arrow flaticon-right-arrow"
-                        href="project-detail.html"
-                      ></a>
-                    </div>
+            </div>
+            <div
+              class="portfolio-item-card"
+              data-index="2"
+              tabindex="0"
+              role="button"
+              aria-label="View BANK OF INDIA - gold new 01"
+            >
+              <div class="card-img-wrap">
+                <img
+                  src="images/work/BANK%20OF%20INDIA/gold%20new-01.jpg"
+                  alt="BANK OF INDIA - gold new 01"
+                  loading="lazy"
+                />
+                <div class="card-overlay">
+                  <span class="zoom-btn"
+                    ><i class="fa fa-search-plus"></i
+                  ></span>
+                  <div class="card-meta">
+                    <div class="card-client">BANK OF INDIA</div>
+                    <div class="card-title">gold new 01</div>
                   </div>
                 </div>
               </div>
-
-              <!-- Project Block -->
-              <div
-                class="project-block masonry-item col-lg-3 col-md-6 col-sm-12"
-              >
-                <div class="inner-box">
-                  <div class="image">
-                    <a href="project-detail.html"
-                      ><img src="images/gallery/32.jpg" alt=""
-                    /></a>
-                    <div class="content">
-                      <h6>
-                        <a href="project-detail.html">Silk-screen printing</a>
-                      </h6>
-                      <a
-                        class="arrow flaticon-right-arrow"
-                        href="project-detail.html"
-                      ></a>
-                    </div>
+            </div>
+            <div
+              class="portfolio-item-card"
+              data-index="3"
+              tabindex="0"
+              role="button"
+              aria-label="View BANK OF INDIA - LOGO"
+            >
+              <div class="card-img-wrap">
+                <img
+                  src="images/work/BANK%20OF%20INDIA/LOGO.png"
+                  alt="BANK OF INDIA - LOGO"
+                  loading="lazy"
+                />
+                <div class="card-overlay">
+                  <span class="zoom-btn"
+                    ><i class="fa fa-search-plus"></i
+                  ></span>
+                  <div class="card-meta">
+                    <div class="card-client">BANK OF INDIA</div>
+                    <div class="card-title">LOGO</div>
                   </div>
                 </div>
               </div>
-
-              <!-- Project Block -->
-              <div
-                class="project-block masonry-item col-lg-6 col-md-6 col-sm-12"
-              >
-                <div class="inner-box">
-                  <div class="image">
-                    <a href="project-detail.html"
-                      ><img src="images/gallery/33.jpg" alt=""
-                    /></a>
-                    <div class="content">
-                      <h6>
-                        <a href="project-detail.html">Silk-screen printing</a>
-                      </h6>
-                      <a
-                        class="arrow flaticon-right-arrow"
-                        href="project-detail.html"
-                      ></a>
-                    </div>
+            </div>
+            <div
+              class="portfolio-item-card"
+              data-index="4"
+              tabindex="0"
+              role="button"
+              aria-label="View BANK OF INDIA - stande"
+            >
+              <div class="card-img-wrap">
+                <img
+                  src="images/work/BANK%20OF%20INDIA/stande.jpg"
+                  alt="BANK OF INDIA - stande"
+                  loading="lazy"
+                />
+                <div class="card-overlay">
+                  <span class="zoom-btn"
+                    ><i class="fa fa-search-plus"></i
+                  ></span>
+                  <div class="card-meta">
+                    <div class="card-client">BANK OF INDIA</div>
+                    <div class="card-title">stande</div>
                   </div>
                 </div>
               </div>
-
-              <!-- Project Block -->
-              <div
-                class="project-block masonry-item col-lg-6 col-md-6 col-sm-12"
-              >
-                <div class="inner-box">
-                  <div class="image">
-                    <a href="project-detail.html"
-                      ><img src="images/gallery/34.jpg" alt=""
-                    /></a>
-                    <div class="content">
-                      <h6>
-                        <a href="project-detail.html">Silk-screen printing</a>
-                      </h6>
-                      <a
-                        class="arrow flaticon-right-arrow"
-                        href="project-detail.html"
-                      ></a>
-                    </div>
+            </div>
+            <div
+              class="portfolio-item-card"
+              data-index="5"
+              tabindex="0"
+              role="button"
+              aria-label="View BANK OF INDIA - STANDI"
+            >
+              <div class="card-img-wrap">
+                <img
+                  src="images/work/BANK%20OF%20INDIA/STANDI.jpeg"
+                  alt="BANK OF INDIA - STANDI"
+                  loading="lazy"
+                />
+                <div class="card-overlay">
+                  <span class="zoom-btn"
+                    ><i class="fa fa-search-plus"></i
+                  ></span>
+                  <div class="card-meta">
+                    <div class="card-client">BANK OF INDIA</div>
+                    <div class="card-title">STANDI</div>
                   </div>
                 </div>
               </div>
-
-              <!-- Project Block -->
-              <div
-                class="project-block masonry-item col-lg-6 col-md-6 col-sm-12"
-              >
-                <div class="inner-box">
-                  <div class="image">
-                    <a href="project-detail.html"
-                      ><img src="images/gallery/35.jpg" alt=""
-                    /></a>
-                    <div class="content">
-                      <h6>
-                        <a href="project-detail.html">Silk-screen printing</a>
-                      </h6>
-                      <a
-                        class="arrow flaticon-right-arrow"
-                        href="project-detail.html"
-                      ></a>
-                    </div>
+            </div>
+            <div
+              class="portfolio-item-card"
+              data-index="6"
+              tabindex="0"
+              role="button"
+              aria-label="View BANK OF INDIA - Work Sample"
+            >
+              <div class="card-img-wrap">
+                <img
+                  src="images/work/BANK%20OF%20INDIA/WhatsApp%20Image%202026-11-07%20at%205.57.19%20PM.jpeg"
+                  alt="BANK OF INDIA - Work Sample"
+                  loading="lazy"
+                />
+                <div class="card-overlay">
+                  <span class="zoom-btn"
+                    ><i class="fa fa-search-plus"></i
+                  ></span>
+                  <div class="card-meta">
+                    <div class="card-client">BANK OF INDIA</div>
+                    <div class="card-title">Work Sample</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Read More Button Container -->
+          <div
+            class="portfolio-readmore-wrap"
+            id="portfolioReadMoreWrap"
+            style="display: none"
+          >
+            <button
+              type="button"
+              class="portfolio-readmore-btn"
+              id="portfolioReadMoreBtn"
+            >
+              READ MORE
+            </button>
+          </div>
         </div>
       </div>
       <!-- End Project Page Section -->
+
+      <!-- Portfolio Image Lightbox Modal -->
+      <div
+        class="portfolio-lightbox"
+        id="portfolioLightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+      >
+        <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="lightbox-container">
+          <button
+            type="button"
+            class="lightbox-btn lightbox-close"
+            id="lightboxClose"
+            aria-label="Close Lightbox"
+          >
+            &times;
+          </button>
+          <button
+            type="button"
+            class="lightbox-btn lightbox-prev"
+            id="lightboxPrev"
+            aria-label="Previous Image"
+          >
+            &#10094;
+          </button>
+          <button
+            type="button"
+            class="lightbox-btn lightbox-next"
+            id="lightboxNext"
+            aria-label="Next Image"
+          >
+            &#10095;
+          </button>
+
+          <div class="lightbox-content">
+            <div class="lightbox-image-wrap" id="lightboxImageWrap">
+              <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+            </div>
+            <div class="lightbox-footer">
+              <div class="lightbox-caption" id="lightboxCaption"></div>
+              <div class="lightbox-counter" id="lightboxCounter"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Image Lightbox Modal -->
+      <div
+        class="portfolio-lightbox"
+        id="portfolioLightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+      >
+        <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="lightbox-container">
+          <button
+            type="button"
+            class="lightbox-btn lightbox-close"
+            id="lightboxClose"
+            aria-label="Close Lightbox"
+          >
+            &times;
+          </button>
+          <button
+            type="button"
+            class="lightbox-btn lightbox-prev"
+            id="lightboxPrev"
+            aria-label="Previous Image"
+          >
+            &#10094;
+          </button>
+          <button
+            type="button"
+            class="lightbox-btn lightbox-next"
+            id="lightboxNext"
+            aria-label="Next Image"
+          >
+            &#10095;
+          </button>
+
+          <div class="lightbox-content">
+            <div class="lightbox-image-wrap" id="lightboxImageWrap">
+              <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+            </div>
+            <div class="lightbox-footer">
+              <div class="lightbox-caption" id="lightboxCaption"></div>
+              <div class="lightbox-counter" id="lightboxCounter"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Brand Section -->
       <section class="brand-section">
@@ -647,7 +1399,9 @@
                     <div class="footer-widget links-widget">
                       <h5>Our Services</h5>
                       <ul class="page-list">
-                        <li><a href="/letter-cutting.html">Letter Cutting</a></li>
+                        <li>
+                          <a href="/letter-cutting.html">Letter Cutting</a>
+                        </li>
                         <li><a href="/led-board.html">LED Board</a></li>
                         <li><a href="/printing.html">Printing</a></li>
                         <li><a href="/screen-print.html">Screen Print</a></li>
@@ -791,5 +1545,727 @@
       data-cf-beacon='{"version":"2024.11.0","token":"daf30b97c9e94fec9725b4f69e8dd5ef","r":1,"spa":2}'
       crossorigin="anonymous"
     ></script>
+
+    <!-- Portfolio Gallery & Lightbox Script -->
+    <script>
+      (function () {
+        var PORTFOLIO_DATA = {
+          "BANK OF INDIA": [
+            {
+              src: "images/work/BANK OF INDIA/a5 newx.jpg",
+              alt: "BANK OF INDIA - a5 newx",
+              title: "a5 newx",
+            },
+            {
+              src: "images/work/BANK OF INDIA/BROUCHER.jpg",
+              alt: "BANK OF INDIA - BROUCHER",
+              title: "BROUCHER",
+            },
+            {
+              src: "images/work/BANK OF INDIA/gold new-01.jpg",
+              alt: "BANK OF INDIA - gold new 01",
+              title: "gold new 01",
+            },
+            {
+              src: "images/work/BANK OF INDIA/LOGO.png",
+              alt: "BANK OF INDIA - LOGO",
+              title: "LOGO",
+            },
+            {
+              src: "images/work/BANK OF INDIA/stande.jpg",
+              alt: "BANK OF INDIA - stande",
+              title: "stande",
+            },
+            {
+              src: "images/work/BANK OF INDIA/STANDI.jpeg",
+              alt: "BANK OF INDIA - STANDI",
+              title: "STANDI",
+            },
+            {
+              src: "images/work/BANK OF INDIA/WhatsApp Image 2026-11-07 at 5.57.19 PM.jpeg",
+              alt: "BANK OF INDIA - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          "CHRISTNAGAR SCHOOL": [
+            {
+              src: "images/work/chrisstnagar school/17e33eef-c423-4d7f-bcaa-d404964cd4a9.jfif",
+              alt: "CHRISTNAGAR SCHOOL - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/chrisstnagar school/193390b3-b756-46eb-9eb1-24da66f15b28.jfif",
+              alt: "CHRISTNAGAR SCHOOL - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/chrisstnagar school/a.jfif",
+              alt: "CHRISTNAGAR SCHOOL - CHRISTNAGAR SCHOOL Work",
+              title: "CHRISTNAGAR SCHOOL Work",
+            },
+          ],
+          "EXCISE DEPARTMENT": [
+            {
+              src: "images/work/excise DEPARTMENT/A.jfif",
+              alt: "EXCISE DEPARTMENT - EXCISE DEPARTMENT Work",
+              title: "EXCISE DEPARTMENT Work",
+            },
+            {
+              src: "images/work/excise DEPARTMENT/LOHO/images.jfif",
+              alt: "EXCISE DEPARTMENT - images",
+              title: "images",
+            },
+            {
+              src: "images/work/excise DEPARTMENT/Screenshot 2026-10-06 184909.png",
+              alt: "EXCISE DEPARTMENT - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          FOREST: [
+            {
+              src: "images/work/FOREST/1.jpg",
+              alt: "FOREST - FOREST Work",
+              title: "FOREST Work",
+            },
+            {
+              src: "images/work/FOREST/2.jpg",
+              alt: "FOREST - FOREST Work",
+              title: "FOREST Work",
+            },
+            {
+              src: "images/work/FOREST/3.jpg",
+              alt: "FOREST - FOREST Work",
+              title: "FOREST Work",
+            },
+            {
+              src: "images/work/FOREST/4.jpg",
+              alt: "FOREST - FOREST Work",
+              title: "FOREST Work",
+            },
+            {
+              src: "images/work/FOREST/5.jpg",
+              alt: "FOREST - FOREST Work",
+              title: "FOREST Work",
+            },
+            {
+              src: "images/work/FOREST/LOGO/Untitled-1.jpg",
+              alt: "FOREST - Untitled 1",
+              title: "Untitled 1",
+            },
+            {
+              src: "images/work/FOREST/WhatsApp Image 2026-11-07 at 4.43.56 PM.jpeg",
+              alt: "FOREST - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          HANTEX: [
+            {
+              src: "images/work/Hantex/HANTEX-LOGO.jpg",
+              alt: "HANTEX - HANTEX LOGO",
+              title: "HANTEX LOGO",
+            },
+            {
+              src: "images/work/Hantex/WhatsApp Image 2026-11-07 at 4.29.25 PM.jpeg",
+              alt: "HANTEX - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/Hantex/WhatsApp Image 2026-11-07 at 4.38.20 PM.jpeg",
+              alt: "HANTEX - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          KERAFED: [
+            {
+              src: "images/work/KERAFED/02.jpg",
+              alt: "KERAFED - 02",
+              title: "02",
+            },
+            {
+              src: "images/work/KERAFED/LOGO/kera.jpg",
+              alt: "KERAFED - kera",
+              title: "kera",
+            },
+          ],
+          "KERALA POLICE": [
+            {
+              src: "images/work/Kerala police/logo/download (1).png",
+              alt: "KERALA POLICE - download (1)",
+              title: "download (1)",
+            },
+            {
+              src: "images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.05.42 PM.jpeg",
+              alt: "KERALA POLICE - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.06.57 PM.jpeg",
+              alt: "KERALA POLICE - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.08.12 PM.jpeg",
+              alt: "KERALA POLICE - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.11.28 PM.jpeg",
+              alt: "KERALA POLICE - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.11.44 PM.jpeg",
+              alt: "KERALA POLICE - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/Kerala police/WhatsApp Image 2026-11-07 at 5.11.57 PM.jpeg",
+              alt: "KERALA POLICE - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          "LIBRARY COUNCIL": [
+            {
+              src: "images/work/library council/a.jfif",
+              alt: "LIBRARY COUNCIL - LIBRARY COUNCIL Work",
+              title: "LIBRARY COUNCIL Work",
+            },
+            {
+              src: "images/work/library council/b.jfif",
+              alt: "LIBRARY COUNCIL - LIBRARY COUNCIL Work",
+              title: "LIBRARY COUNCIL Work",
+            },
+            {
+              src: "images/work/library council/certificate.jpg",
+              alt: "LIBRARY COUNCIL - certificate",
+              title: "certificate",
+            },
+            {
+              src: "images/work/library council/logo/logo.png",
+              alt: "LIBRARY COUNCIL - logo",
+              title: "logo",
+            },
+          ],
+          MALSYAFED: [
+            {
+              src: "images/work/Malsyafed/ARCH.JPG",
+              alt: "MALSYAFED - ARCH",
+              title: "ARCH",
+            },
+            {
+              src: "images/work/Malsyafed/backdrop.JPG",
+              alt: "MALSYAFED - backdrop",
+              title: "backdrop",
+            },
+            {
+              src: "images/work/Malsyafed/badge.JPG",
+              alt: "MALSYAFED - badge",
+              title: "badge",
+            },
+            {
+              src: "images/work/Malsyafed/logo.JPG",
+              alt: "MALSYAFED - logo",
+              title: "logo",
+            },
+          ],
+          "MOHANDAS COLLEGE": [
+            {
+              src: "images/work/Mohandas College/LOGO/Mohandas College.jpeg",
+              alt: "MOHANDAS COLLEGE - Mohandas College",
+              title: "Mohandas College",
+            },
+            {
+              src: "images/work/Mohandas College/LOGO/WhatsApp Image 2026-11-07 at 5.47.34 PM (1).jpeg",
+              alt: "MOHANDAS COLLEGE - Work Sample (1)",
+              title: "Work Sample (1)",
+            },
+            {
+              src: "images/work/Mohandas College/LOGO/WhatsApp Image 2026-11-07 at 5.47.34 PM.jpeg",
+              alt: "MOHANDAS COLLEGE - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/Mohandas College/WhatsApp Image 2026-11-07 at 5.44.21 PM.jpeg",
+              alt: "MOHANDAS COLLEGE - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/Mohandas College/WhatsApp Image 2026-11-07 at 5.45.37 PM.jpeg",
+              alt: "MOHANDAS COLLEGE - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          "NATIONAL EMPLOYMENT SERVICE (KERALAM)": [
+            {
+              src: "images/work/National Employment Service  (keralam)/back drop b.jpg",
+              alt: "NATIONAL EMPLOYMENT SERVICE (KERALAM) - back drop b",
+              title: "back drop b",
+            },
+            {
+              src: "images/work/National Employment Service  (keralam)/back drop.jpg",
+              alt: "NATIONAL EMPLOYMENT SERVICE (KERALAM) - back drop",
+              title: "back drop",
+            },
+            {
+              src: "images/work/National Employment Service  (keralam)/board b.jpg",
+              alt: "NATIONAL EMPLOYMENT SERVICE (KERALAM) - board b",
+              title: "board b",
+            },
+            {
+              src: "images/work/National Employment Service  (keralam)/board.jpg",
+              alt: "NATIONAL EMPLOYMENT SERVICE (KERALAM) - board",
+              title: "board",
+            },
+            {
+              src: "images/work/National Employment Service  (keralam)/logo/National Employment Service  (keralam).jpg",
+              alt: "NATIONAL EMPLOYMENT SERVICE (KERALAM) - National Employment Service  (keralam)",
+              title: "National Employment Service  (keralam)",
+            },
+          ],
+          RAILWAY: [
+            {
+              src: "images/work/RAILWAY/1.jpg",
+              alt: "RAILWAY - RAILWAY Work",
+              title: "RAILWAY Work",
+            },
+            {
+              src: "images/work/RAILWAY/2.jpg",
+              alt: "RAILWAY - RAILWAY Work",
+              title: "RAILWAY Work",
+            },
+            {
+              src: "images/work/RAILWAY/3.jpg",
+              alt: "RAILWAY - RAILWAY Work",
+              title: "RAILWAY Work",
+            },
+            {
+              src: "images/work/RAILWAY/4.jpg",
+              alt: "RAILWAY - RAILWAY Work",
+              title: "RAILWAY Work",
+            },
+            {
+              src: "images/work/RAILWAY/A.jfif",
+              alt: "RAILWAY - RAILWAY Work",
+              title: "RAILWAY Work",
+            },
+            {
+              src: "images/work/RAILWAY/RAILWAY.jfif",
+              alt: "RAILWAY - RAILWAY",
+              title: "RAILWAY",
+            },
+          ],
+          RAJADHANI: [
+            {
+              src: "images/work/RAJADHANI/LOGO/RAJADHANI.jpeg",
+              alt: "RAJADHANI - RAJADHANI",
+              title: "RAJADHANI",
+            },
+            {
+              src: "images/work/RAJADHANI/Screenshot 2026-11-07 174347.png",
+              alt: "RAJADHANI - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          SEU: [
+            {
+              src: "images/work/seu/logo/seu.jpeg",
+              alt: "SEU - seu",
+              title: "seu",
+            },
+            {
+              src: "images/work/seu/Screenshot 2026-10-23 170012.png",
+              alt: "SEU - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/seu/Screenshot 2026-10-23 183040.png",
+              alt: "SEU - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/seu/Screenshot 2026-10-24 110900.png",
+              alt: "SEU - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/seu/Screenshot 2026-10-24 140856.png",
+              alt: "SEU - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/seu/Screenshot 2026-10-24 163239.png",
+              alt: "SEU - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          "SPORTS COUNCIL": [
+            {
+              src: "images/work/Sports Council/02.jpg",
+              alt: "SPORTS COUNCIL - 02",
+              title: "02",
+            },
+            {
+              src: "images/work/Sports Council/4x6 Flex 1nos.jpg",
+              alt: "SPORTS COUNCIL - 4x6 Flex 1nos",
+              title: "4x6 Flex 1nos",
+            },
+            {
+              src: "images/work/Sports Council/51bb7e65-4efe-491b-a2d2-c8f06b48c79b.jfif",
+              alt: "SPORTS COUNCIL - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/Sports Council/logo/Sports Council.jpg",
+              alt: "SPORTS COUNCIL - Sports Council",
+              title: "Sports Council",
+            },
+            {
+              src: "images/work/Sports Council/SPORTS.jpg",
+              alt: "SPORTS COUNCIL - SPORTS",
+              title: "SPORTS",
+            },
+            {
+              src: "images/work/Sports Council/WhatsApp Image 2026-11-06 at 7.00.46 PM.jpeg",
+              alt: "SPORTS COUNCIL - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          "STATE RESOURCE": [
+            {
+              src: "images/work/State Resorce/back drop.jpg",
+              alt: "STATE RESOURCE - back drop",
+              title: "back drop",
+            },
+            {
+              src: "images/work/State Resorce/State Resorce.jpg",
+              alt: "STATE RESOURCE - State Resorce",
+              title: "State Resorce",
+            },
+          ],
+          TOURISM: [
+            {
+              src: "images/work/tourism/LOGO/tourism.jpeg",
+              alt: "TOURISM - tourism",
+              title: "tourism",
+            },
+            {
+              src: "images/work/tourism/Screenshot 2026-11-07 174844.png",
+              alt: "TOURISM - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/tourism/Screenshot 2026-11-07 175036.png",
+              alt: "TOURISM - Work Sample",
+              title: "Work Sample",
+            },
+          ],
+          "TRIVANDRUM CORPORATION": [
+            {
+              src: "images/work/trivandrum Corporation/A.jfif",
+              alt: "TRIVANDRUM CORPORATION - TRIVANDRUM CORPORATION Work",
+              title: "TRIVANDRUM CORPORATION Work",
+            },
+            {
+              src: "images/work/trivandrum Corporation/Screenshot 2026-11-07 165227.png",
+              alt: "TRIVANDRUM CORPORATION - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/trivandrum Corporation/Screenshot 2026-11-07 172746.png",
+              alt: "TRIVANDRUM CORPORATION - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/trivandrum Corporation/Screenshot 2026-11-07 173124.png",
+              alt: "TRIVANDRUM CORPORATION - Work Sample",
+              title: "Work Sample",
+            },
+            {
+              src: "images/work/trivandrum Corporation/trivandrum Corporation.png",
+              alt: "TRIVANDRUM CORPORATION - trivandrum Corporation",
+              title: "trivandrum Corporation",
+            },
+          ],
+        };
+        var IMAGES_PER_PAGE = 10;
+
+        var currentClient = "BANK OF INDIA";
+        var currentImages = PORTFOLIO_DATA[currentClient] || [];
+        var visibleCount = IMAGES_PER_PAGE;
+        var currentLightboxIndex = 0;
+
+        var tabsNav = document.getElementById("portfolioTabsNav");
+        var galleryGrid = document.getElementById("portfolioGalleryGrid");
+        var readMoreWrap = document.getElementById("portfolioReadMoreWrap");
+        var readMoreBtn = document.getElementById("portfolioReadMoreBtn");
+
+        var lightbox = document.getElementById("portfolioLightbox");
+        var lightboxImg = document.getElementById("lightboxImg");
+        var lightboxCaption = document.getElementById("lightboxCaption");
+        var lightboxCounter = document.getElementById("lightboxCounter");
+        var lightboxClose = document.getElementById("lightboxClose");
+        var lightboxBackdrop = document.getElementById("lightboxBackdrop");
+        var lightboxPrev = document.getElementById("lightboxPrev");
+        var lightboxNext = document.getElementById("lightboxNext");
+        var lightboxImageWrap = document.getElementById("lightboxImageWrap");
+
+        function createCardHtml(item, index, clientName) {
+          var encodedSrc = encodeURI(item.src);
+          return (
+            '<div class="portfolio-item-card" data-index="' +
+            index +
+            '" tabindex="0" role="button" aria-label="View ' +
+            item.alt +
+            '">' +
+            '<div class="card-img-wrap">' +
+            '<img src="' +
+            encodedSrc +
+            '" alt="' +
+            item.alt +
+            '" loading="lazy" />' +
+            '<div class="card-overlay">' +
+            '<span class="zoom-btn"><i class="fa fa-search-plus"></i></span>' +
+            '<div class="card-meta">' +
+            '<div class="card-client">' +
+            clientName +
+            "</div>" +
+            '<div class="card-title">' +
+            item.title +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>"
+          );
+        }
+
+        // Render initial batch (first 10 images) for a client
+        function renderGallery(clientName) {
+          currentClient = clientName;
+          currentImages = PORTFOLIO_DATA[clientName] || [];
+          visibleCount = IMAGES_PER_PAGE;
+
+          galleryGrid.classList.add("grid-fading");
+
+          setTimeout(function () {
+            if (!currentImages || currentImages.length === 0) {
+              galleryGrid.innerHTML =
+                '<div class="portfolio-empty-state"><p>No portfolio images available for this client.</p></div>';
+              if (readMoreWrap) readMoreWrap.style.display = "none";
+            } else {
+              var slice = currentImages.slice(0, visibleCount);
+              var cardsHtml = "";
+              for (var i = 0; i < slice.length; i++) {
+                cardsHtml += createCardHtml(slice[i], i, clientName);
+              }
+              galleryGrid.innerHTML = cardsHtml;
+
+              // Read More button visibility
+              if (readMoreWrap) {
+                if (currentImages.length > visibleCount) {
+                  readMoreWrap.style.display = "block";
+                } else {
+                  readMoreWrap.style.display = "none";
+                }
+              }
+            }
+            galleryGrid.classList.remove("grid-fading");
+          }, 120);
+        }
+
+        // Load next 10 images on Read More click
+        function loadMoreImages() {
+          if (!currentImages || visibleCount >= currentImages.length) return;
+
+          var startIndex = visibleCount;
+          visibleCount += IMAGES_PER_PAGE;
+          var nextSlice = currentImages.slice(startIndex, visibleCount);
+
+          var fragment = document.createDocumentFragment();
+          for (var i = 0; i < nextSlice.length; i++) {
+            var globalIndex = startIndex + i;
+            var tempDiv = document.createElement("div");
+            tempDiv.innerHTML = createCardHtml(
+              nextSlice[i],
+              globalIndex,
+              currentClient,
+            );
+            var cardEl = tempDiv.firstElementChild;
+            fragment.appendChild(cardEl);
+          }
+          galleryGrid.appendChild(fragment);
+
+          // Hide Read More button if all images are now displayed
+          if (readMoreWrap) {
+            if (visibleCount >= currentImages.length) {
+              readMoreWrap.style.display = "none";
+            }
+          }
+        }
+
+        if (readMoreBtn) {
+          readMoreBtn.addEventListener("click", loadMoreImages);
+        }
+
+        // Tab click handling
+        if (tabsNav) {
+          tabsNav.addEventListener("click", function (e) {
+            var btn = e.target.closest(".portfolio-tab-btn");
+            if (!btn) return;
+
+            var client = btn.getAttribute("data-client");
+            if (!client || client === currentClient) return;
+
+            var allTabs = tabsNav.querySelectorAll(".portfolio-tab-btn");
+            allTabs.forEach(function (t) {
+              t.classList.remove("active");
+            });
+            btn.classList.add("active");
+
+            // On mobile view, automatically scroll selected tab into view
+            if (window.innerWidth <= 767) {
+              btn.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center",
+              });
+            }
+
+            renderGallery(client);
+          });
+        }
+
+        // Gallery item click (open Lightbox)
+        if (galleryGrid) {
+          galleryGrid.addEventListener("click", function (e) {
+            var card = e.target.closest(".portfolio-item-card");
+            if (!card) return;
+            var idx = parseInt(card.getAttribute("data-index"), 10);
+            if (!isNaN(idx)) {
+              openLightbox(idx);
+            }
+          });
+
+          galleryGrid.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              var card = e.target.closest(".portfolio-item-card");
+              if (card) {
+                e.preventDefault();
+                var idx = parseInt(card.getAttribute("data-index"), 10);
+                if (!isNaN(idx)) openLightbox(idx);
+              }
+            }
+          });
+        }
+
+        // Lightbox Functions
+        function getLoadedImagesCount() {
+          return Math.min(visibleCount, currentImages.length);
+        }
+
+        function openLightbox(index) {
+          if (!currentImages || currentImages.length === 0) return;
+          var totalVisible = getLoadedImagesCount();
+          if (index < 0 || index >= totalVisible) return;
+          currentLightboxIndex = index;
+          updateLightboxContent();
+          lightbox.classList.add("active");
+          lightbox.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove("active");
+          lightbox.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        }
+
+        function updateLightboxContent() {
+          var totalVisible = getLoadedImagesCount();
+          if (totalVisible === 0) return;
+          var item = currentImages[currentLightboxIndex];
+          lightboxImg.src = encodeURI(item.src);
+          lightboxImg.alt = item.alt;
+          lightboxCaption.textContent = currentClient + " — " + item.title;
+          lightboxCounter.textContent =
+            currentLightboxIndex + 1 + " / " + totalVisible;
+        }
+
+        function showNextImage() {
+          var totalVisible = getLoadedImagesCount();
+          if (totalVisible === 0) return;
+          currentLightboxIndex = (currentLightboxIndex + 1) % totalVisible;
+          updateLightboxContent();
+        }
+
+        function showPrevImage() {
+          var totalVisible = getLoadedImagesCount();
+          if (totalVisible === 0) return;
+          currentLightboxIndex =
+            (currentLightboxIndex - 1 + totalVisible) % totalVisible;
+          updateLightboxContent();
+        }
+
+        if (lightboxClose)
+          lightboxClose.addEventListener("click", closeLightbox);
+        if (lightboxBackdrop)
+          lightboxBackdrop.addEventListener("click", closeLightbox);
+        if (lightboxNext)
+          lightboxNext.addEventListener("click", function (e) {
+            e.stopPropagation();
+            showNextImage();
+          });
+        if (lightboxPrev)
+          lightboxPrev.addEventListener("click", function (e) {
+            e.stopPropagation();
+            showPrevImage();
+          });
+
+        // Keyboard Navigation
+        document.addEventListener("keydown", function (e) {
+          if (!lightbox.classList.contains("active")) return;
+          if (e.key === "Escape") {
+            closeLightbox();
+          } else if (e.key === "ArrowRight") {
+            showNextImage();
+          } else if (e.key === "ArrowLeft") {
+            showPrevImage();
+          }
+        });
+
+        // Touch Swipe Navigation for Mobile
+        var touchStartX = 0;
+        var touchEndX = 0;
+        if (lightboxImageWrap) {
+          lightboxImageWrap.addEventListener(
+            "touchstart",
+            function (e) {
+              touchStartX = e.changedTouches[0].screenX;
+            },
+            { passive: true },
+          );
+
+          lightboxImageWrap.addEventListener(
+            "touchend",
+            function (e) {
+              touchEndX = e.changedTouches[0].screenX;
+              handleSwipe();
+            },
+            { passive: true },
+          );
+        }
+
+        function handleSwipe() {
+          var diff = touchEndX - touchStartX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) {
+              showPrevImage();
+            } else {
+              showNextImage();
+            }
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
