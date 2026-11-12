@@ -2156,18 +2156,44 @@
                     background-image: url(images/background/circles-layer.png);
                   "
                 ></div>
-                <div class="images-outer parallax-scene-1">
-                  <div class="image" data-depth="0.20">
-                    <img src="images/resource/business-1.jpg" alt="" />
-                  </div>
-                  <div class="image-two" data-depth="0.30">
-                    <img src="images/resource/business-2.jpg" alt="" />
-                  </div>
-                  <div class="image-three" data-depth="0.70">
-                    <img src="images/resource/business-3.jpg" alt="" />
-                  </div>
+                <div
+                  class="images-outer video-wrapper"
+                  style="
+                    position: relative;
+                    z-index: 2;
+                    width: 100%;
+                    max-width: 540px;
+                    margin: 0 auto;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.12);
+                    background-color: #000000;
+                  "
+                >
+                  <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    poster="images/resource/video-image.jpg"
+                    style="
+                      width: 100%;
+                      height: clamp(280px, 48vw, 490px);
+                      object-fit: cover;
+                      display: block;
+                      border-radius: 16px;
+                    "
+                  >
+                    <source src="images/video/video.mp4" type="video/mp4" />
+                    <source src="images/video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
-                <div class="print-icon">
+                <div
+                  class="print-icon"
+                  style="bottom: -25px; right: 25px; z-index: 3;"
+                >
                   <img src="images/icons/printer.png" alt="" />
                 </div>
               </div>
