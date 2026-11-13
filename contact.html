@@ -676,16 +676,35 @@
               <div class="inner-column">
                 <!-- Contact Form -->
                 <div class="contact-form">
-                  <form
-                    method="post"
-                    action="https://html.themexriver.com/prinox/sendemail.php"
-                    id="contact-form"
-                  >
+                  <div
+                    id="form-messages"
+                    class="form-messages"
+                    role="alert"
+                    style="
+                      display: none;
+                      margin-bottom: 25px;
+                      padding: 15px 20px;
+                      border-radius: 6px;
+                      font-size: 15px;
+                      font-weight: 500;
+                      line-height: 1.5;
+                    "
+                  ></div>
+                  <form method="post" action="message.php" id="contact-form">
+                    <div style="display: none;" aria-hidden="true">
+                      <input
+                        type="text"
+                        name="website_hp"
+                        tabindex="-1"
+                        autocomplete="off"
+                      />
+                    </div>
                     <div class="row clearfix">
                       <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                         <input
                           type="text"
                           name="username"
+                          id="username"
                           placeholder="Enter Your name"
                           required=""
                         />
@@ -695,6 +714,7 @@
                         <input
                           type="text"
                           name="phone"
+                          id="phone"
                           placeholder="Enter Your Phone Number"
                           required=""
                         />
@@ -702,16 +722,20 @@
 
                       <div class="col-lg-6 col-md-6 col-sm-12 form-group">
                         <select
-                          name="currency"
-                          class="custom-select-box"
                           name="services"
-                          required
+                          id="services"
+                          class="custom-select-box"
+                          required=""
                         >
-                          <option>Please Choose your current City</option>
-                          <option>City 01</option>
-                          <option>City 02</option>
-                          <option>City 03</option>
-                          <option>City 04</option>
+                          <option value="">choose services</option>
+                          <option value="Letter Cutting">Letter Cutting</option>
+                          <option value="Offset Printing">Offset Printing</option>
+                          <option value="Screen Print">Screen Print</option>
+                          <option value="Frame">Frame</option>
+                          <option value="LED Board">LED Board</option>
+                          <option value="Printing">Printing</option>
+                          <option value="Painting">Painting</option>
+                          <option value="Seal">Seal</option>
                         </select>
                       </div>
 
@@ -719,7 +743,8 @@
                         <input
                           type="text"
                           name="subject"
-                          placeholder="Appartmentment, (optinal)"
+                          id="subject"
+                          placeholder="Subject"
                           required=""
                         />
                       </div>
@@ -728,7 +753,9 @@
                         <textarea
                           class=""
                           name="message"
+                          id="message"
                           placeholder="Description (about Product)"
+                          required=""
                         ></textarea>
                       </div>
 
@@ -748,10 +775,14 @@
 
                       <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                         <div class="buttons-box">
-                          <button class="theme-btn btn-style-three">
+                          <button
+                            type="submit"
+                            class="theme-btn btn-style-three"
+                            id="submit-btn"
+                          >
                             <span class="btn-wrap">
-                              <span class="text-one">Send Messege</span>
-                              <span class="text-two">Send Messege</span>
+                              <span class="text-one">Send Message</span>
+                              <span class="text-two">Send Message</span>
                             </span>
                             <span class="icon flaticon-right-arrow"></span>
                           </button>
@@ -759,6 +790,179 @@
                       </div>
                     </div>
                   </form>
+                  <script>
+                    (function () {
+                      function initContactForm() {
+                        var form = document.getElementById("contact-form");
+                        var formMessages = document.getElementById("form-messages");
+                        var submitBtn = document.getElementById("submit-btn");
+                        if (!form || !formMessages) return;
+
+                        var params = new URLSearchParams(window.location.search);
+                        var status = params.get("status");
+                        var msg = params.get("msg");
+                        if (status === "success") {
+                          showMessage(
+                            "success",
+                            "Thank you! Your message has been sent successfully. We will get in touch with you shortly."
+                          );
+                        } else if (status === "error") {
+                          showMessage(
+                            "error",
+                            msg ||
+                              "There was an error sending your message. Please try again."
+                          );
+                        }
+
+                        function showMessage(type, text) {
+                          formMessages.style.display = "block";
+                          if (type === "success") {
+                            formMessages.style.backgroundColor = "#d4edda";
+                            formMessages.style.color = "#155724";
+                            formMessages.style.border = "1px solid #c3e6cb";
+                            formMessages.innerHTML =
+                              '<span class="fa fa-check-circle" style="margin-right: 8px;"></span>' +
+                              text;
+                          } else {
+                            formMessages.style.backgroundColor = "#f8d7da";
+                            formMessages.style.color = "#721c24";
+                            formMessages.style.border = "1px solid #f5c6cb";
+                            formMessages.innerHTML =
+                              '<span class="fa fa-exclamation-triangle" style="margin-right: 8px;"></span>' +
+                              text;
+                          }
+                          formMessages.scrollIntoView({
+                            behavior: "smooth",
+                            block: "nearest",
+                          });
+                        }
+
+                        var btnTextOne = submitBtn
+                          ? submitBtn.querySelector(".text-one")
+                          : null;
+                        var btnTextTwo = submitBtn
+                          ? submitBtn.querySelector(".text-two")
+                          : null;
+                        var originalTextOne = btnTextOne
+                          ? btnTextOne.textContent
+                          : "Send Message";
+                        var originalTextTwo = btnTextTwo
+                          ? btnTextTwo.textContent
+                          : "Send Message";
+
+                        function setSubmittingState(isSubmitting) {
+                          if (!submitBtn) return;
+                          submitBtn.disabled = isSubmitting;
+                          if (isSubmitting) {
+                            if (btnTextOne) btnTextOne.textContent = "Sending...";
+                            if (btnTextTwo) btnTextTwo.textContent = "Sending...";
+                            submitBtn.style.opacity = "0.7";
+                            submitBtn.style.pointerEvents = "none";
+                          } else {
+                            if (btnTextOne)
+                              btnTextOne.textContent = originalTextOne;
+                            if (btnTextTwo)
+                              btnTextTwo.textContent = originalTextTwo;
+                            submitBtn.style.opacity = "";
+                            submitBtn.style.pointerEvents = "";
+                          }
+                        }
+
+                        function sendFormData() {
+                          setSubmittingState(true);
+                          formMessages.style.display = "none";
+
+                          var formData = new FormData(form);
+                          formData.append("ajax", "1");
+
+                          fetch(form.getAttribute("action") || "message.php", {
+                            method: "POST",
+                            body: formData,
+                            headers: {
+                              "X-Requested-With": "XMLHttpRequest",
+                              Accept: "application/json",
+                            },
+                          })
+                            .then(function (res) {
+                              return res.json().catch(function () {
+                                return {
+                                  status: "error",
+                                  message:
+                                    "Server returned an invalid response. Please try again.",
+                                };
+                              });
+                            })
+                            .then(function (data) {
+                              setSubmittingState(false);
+                              if (data.status === "success") {
+                                showMessage("success", data.message);
+                                form.reset();
+                                if (
+                                  window.jQuery &&
+                                  window.jQuery(form).find(".custom-select-box")
+                                    .length
+                                ) {
+                                  try {
+                                    window.jQuery(form)
+                                      .find(".custom-select-box")
+                                      .val("")
+                                      .selectmenu("refresh");
+                                  } catch (e) {}
+                                }
+                              } else {
+                                showMessage(
+                                  "error",
+                                  data.message ||
+                                    "An error occurred while sending your message. Please try again."
+                                );
+                              }
+                            })
+                            .catch(function () {
+                              setSubmittingState(false);
+                              showMessage(
+                                "error",
+                                "Unable to reach the server. Please check your connection or contact us directly."
+                              );
+                            });
+                        }
+
+                        if (window.jQuery) {
+                          var $select = window.jQuery(form).find(
+                            ".custom-select-box"
+                          );
+                          $select.on("selectmenuchange", function () {
+                            if (window.jQuery(form).data("validator")) {
+                              window.jQuery(this).valid();
+                            }
+                          });
+
+                          var validator = window.jQuery(form).data("validator");
+                          if (validator) {
+                            validator.settings.ignore = ":hidden:not(select)";
+                            validator.settings.submitHandler = function () {
+                              sendFormData();
+                              return false;
+                            };
+                            return;
+                          }
+                        }
+
+                        form.addEventListener("submit", function (e) {
+                          e.preventDefault();
+                          sendFormData();
+                        });
+                      }
+
+                      if (document.readyState === "loading") {
+                        document.addEventListener(
+                          "DOMContentLoaded",
+                          initContactForm
+                        );
+                      } else {
+                        initContactForm();
+                      }
+                    })();
+                  </script>
                 </div>
                 <!-- End Contact Form -->
               </div>
