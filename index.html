@@ -677,6 +677,70 @@
         opacity: 1;
         z-index: 1;
       }
+
+      /* Hero Banner Equal Height – Mobile & Tablet Only */
+      @media only screen and (max-width: 1023px) {
+        .main-slider .owl-stage {
+          display: flex !important;
+        }
+        .main-slider .owl-item {
+          display: flex !important;
+          height: auto !important;
+          flex-shrink: 0 !important;
+        }
+        .main-slider .slide {
+          width: 100% !important;
+          height: 100% !important;
+          min-height: 720px;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: center !important;
+          padding: 100px 0 250px !important;
+          box-sizing: border-box !important;
+        }
+        .main-slider .slide .auto-container {
+          width: 100% !important;
+          position: relative !important;
+          z-index: 2 !important;
+        }
+        .main-slider .image-layer {
+          position: absolute !important;
+          left: 0 !important;
+          top: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          background-size: cover !important;
+          background-position: center center !important;
+          background-repeat: no-repeat !important;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .main-slider .slide {
+          min-height: 640px;
+          padding: 85px 0 65px !important;
+        }
+        .main-slider .image-layer {
+          background-size: cover !important;
+          background-position: center center !important;
+        }
+      }
+
+      @media only screen and (max-width: 480px) {
+        .main-slider .slide {
+          min-height: 620px;
+          padding: 75px 0 55px !important;
+        }
+      }
+
+      @media only screen and (max-width: 360px) {
+        .main-slider .slide {
+          min-height: 650px;
+          padding: 70px 0 50px !important;
+        }
+      }
     </style>
 
     <!-- Services Section Centering & Balanced Alignment Styles -->
