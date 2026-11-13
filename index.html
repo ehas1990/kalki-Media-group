@@ -419,6 +419,11 @@
           padding: 4px 10px;
         }
       }
+      #btn-arrow {
+        position: relative;
+        left: 9px;
+        top: 4px;
+      }
     </style>
 
     <!-- Why Choose Us Left Column Enhanced Styles -->
@@ -902,6 +907,40 @@
           font-size: 14px;
           line-height: 1.6;
           margin-top: 5px;
+          margin-bottom: 20px;
+          flex-grow: 1;
+        }
+
+        .services-section .service-block .service-box-btn {
+          margin-top: auto;
+          width: 100%;
+          padding: 12px 14px 10px;
+          font-size: 13.5px;
+          font-weight: 600;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          letter-spacing: 0.3px;
+          text-transform: capitalize;
+          box-sizing: border-box;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+
+        .services-section .service-block .service-box-btn .btn-arrow {
+          position: relative;
+          z-index: 2;
+          font-size: 11px;
+          margin-left: 8px;
+          color: #ffffff;
+          line-height: 1;
+          transition: transform 0.3s ease;
+        }
+
+        .services-section .service-block .service-box-btn:hover .btn-arrow {
+          transform: translateX(3px);
         }
 
         .services-section .button-box {
@@ -1629,7 +1668,7 @@
             <!-- End Ct Dot Animated -->
             <div
               class="image-layer"
-              style="background-image: url(images/main-slider/image-1.jpg)"
+              style="background-image: url(images/main-slider/slider-3.webp)"
             ></div>
             <div
               class="vector-icon"
@@ -1644,14 +1683,14 @@
                 <!-- Content Column -->
                 <div class="content-column col-lg-6 col-md-12 col-sm-12">
                   <div class="inner-column">
-                    <div
+                    <!-- <div
                       class="vector-layer titlt"
                       data-tilt
                       data-tilt-max="6"
                       style="
                         background-image: url(images/main-slider/vector-1.png);
                       "
-                    ></div>
+                    ></div> -->
                     <div class="title">YOUR CREATIVE ADVERTISING PARTNER</div>
                     <h1>
                       Creative Advertising &amp; Printing Solutions <br />
@@ -1678,7 +1717,10 @@
                             <span class="text-one">Explore Our Works</span>
                             <span class="text-two">Explore Our Works</span>
                           </span>
-                          <span class="icon flaticon-right-arrow"></span>
+                          <span
+                            class="icon flaticon-right-arrow"
+                            id="arrow"
+                          ></span>
                         </a>
                       </div>
                       <!-- Button Box 2 -->
@@ -1701,12 +1743,12 @@
                 <!-- Image Column -->
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                   <div class="inner-column">
-                    <div class="image">
+                    <!-- <div class="image">
                       <img
                         src="images/main-slider/image-1.png"
                         alt="Kalki Media Groups Advertising & Printing"
                       />
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -1732,7 +1774,7 @@
             </div>
             <div
               class="image-layer"
-              style="background-image: url(images/main-slider/image-1.jpg)"
+              style="background-image: url(images/main-slider/slider-2.webp)"
             ></div>
             <div
               class="vector-icon"
@@ -1747,14 +1789,14 @@
                 <!-- Content Column -->
                 <div class="content-column col-lg-6 col-md-12 col-sm-12">
                   <div class="inner-column">
-                    <div
+                    <!-- <div
                       class="vector-layer titlt"
                       data-tilt
                       data-tilt-max="6"
                       style="
                         background-image: url(images/main-slider/vector-1.png);
                       "
-                    ></div>
+                    ></div> -->
                     <div class="title">YOUR CREATIVE ADVERTISING PARTNER</div>
                     <h1>
                       Make Your Brand Visible. <br />
@@ -1803,12 +1845,12 @@
                 <!-- Image Column -->
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                   <div class="inner-column">
-                    <div class="image">
+                    <!-- <div class="image">
                       <img
                         src="images/main-slider/image-1.png"
                         alt="Creative Signage & Branding"
                       />
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -1834,7 +1876,7 @@
             </div>
             <div
               class="image-layer"
-              style="background-image: url(images/main-slider/image-1.jpg)"
+              style="background-image: url(images/main-slider/slider-1.webp)"
             ></div>
             <div
               class="vector-icon"
@@ -1849,14 +1891,14 @@
                 <!-- Content Column -->
                 <div class="content-column col-lg-6 col-md-12 col-sm-12">
                   <div class="inner-column">
-                    <div
+                    <!-- <div
                       class="vector-layer titlt"
                       data-tilt
                       data-tilt-max="6"
                       style="
                         background-image: url(images/main-slider/vector-1.png);
                       "
-                    ></div>
+                    ></div> -->
                     <div class="title">YOUR CREATIVE ADVERTISING PARTNER</div>
                     <h1>
                       Complete Advertising &amp; <br />
@@ -1905,12 +1947,12 @@
                 <!-- Image Column -->
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                   <div class="inner-column">
-                    <div class="image">
+                    <!-- <div class="image">
                       <img
                         src="images/main-slider/image-1.png"
                         alt="LED Board & Offset Printing"
                       />
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -2014,13 +2056,25 @@
               <div class="service-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
                   <div class="icon flaticon-pencil-and-ruler"></div>
-                  <h6><a href="services.html">Letter Cutting</a></h6>
+                  <h6><a href="/letter-cutting.html">Letter Cutting</a></h6>
                   <div class="text">
                     Give your business a professional appearance with custom
                     letter cutting services. We create attractive lettering for
-                    shop signage, office branding, name boards and promotional
-                    displays.
+                    shop signage and name boards
                   </div>
+                  <a
+                    href="/letter-cutting.html"
+                    class="theme-btn btn-style-one service-box-btn clearfix mt-2"
+                  >
+                    <span class="btn-wrap">
+                      <span class="text-one">Explore Letter Cutting</span>
+                      <span class="text-two">Explore Letter Cutting</span>
+                    </span>
+                    <span
+                      class="btn-arrow flaticon-right-arrow"
+                      id="btn-arrow"
+                    ></span>
+                  </a>
                 </div>
               </div>
 
@@ -2028,12 +2082,25 @@
               <div class="service-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
                   <div class="icon flaticon-offset"></div>
-                  <h6><a href="services.html">Offset Printing</a></h6>
+                  <h6><a href="/offset.html">Offset Printing</a></h6>
                   <div class="text">
                     Get consistent, high-quality printing for brochures, flyers,
-                    business cards, catalogues and other marketing materials
-                    with our offset printing solutions.
+                    business cards, catalogues and other materials with our
+                    offset printing solutions.
                   </div>
+                  <a
+                    href="/offset.html"
+                    class="theme-btn btn-style-one service-box-btn clearfix mt-2"
+                  >
+                    <span class="btn-wrap">
+                      <span class="text-one">Explore Offset Printing</span>
+                      <span class="text-two">Explore Offset Printing</span>
+                    </span>
+                    <span
+                      class="btn-arrow flaticon-right-arrow"
+                      id="btn-arrow"
+                    ></span>
+                  </a>
                 </div>
               </div>
 
@@ -2041,12 +2108,25 @@
               <div class="service-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
                   <div class="icon flaticon-t-shirt"></div>
-                  <h6><a href="services.html">Screen Print</a></h6>
+                  <h6><a href="/screen-print.html">Screen Print</a></h6>
                   <div class="text">
                     Bring your designs to life with screen printing services for
                     promotional products, custom printing and branding
                     applications.
                   </div>
+                  <a
+                    href="/screen-print.html"
+                    class="theme-btn btn-style-one service-box-btn clearfix mt-2"
+                  >
+                    <span class="btn-wrap">
+                      <span class="text-one">Explore Screen Print</span>
+                      <span class="text-two">Explore Screen Print</span>
+                    </span>
+                    <span
+                      class="btn-arrow flaticon-right-arrow"
+                      id="btn-arrow"
+                    ></span>
+                  </a>
                 </div>
               </div>
 
@@ -2054,12 +2134,25 @@
               <div class="service-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
                   <div class="icon flaticon-art-museum"></div>
-                  <h6><a href="services.html">Frame</a></h6>
+                  <h6><a href="/frame.html">Frame</a></h6>
                   <div class="text">
                     Enhance your displays with professionally designed frames
                     for signage, promotional graphics and business presentation
                     requirements.
                   </div>
+                  <a
+                    href="/frame.html"
+                    class="theme-btn btn-style-one service-box-btn clearfix mt-2"
+                  >
+                    <span class="btn-wrap">
+                      <span class="text-one">Explore Frame</span>
+                      <span class="text-two">Explore Frame</span>
+                    </span>
+                    <span
+                      class="btn-arrow flaticon-right-arrow"
+                      id="btn-arrow"
+                    ></span>
+                  </a>
                 </div>
               </div>
 
@@ -2067,12 +2160,25 @@
               <div class="service-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
                   <div class="icon flaticon-bulb"></div>
-                  <h6><a href="services.html">LED Board</a></h6>
+                  <h6><a href="/led-board.html">LED Board</a></h6>
                   <div class="text">
                     Make your business visible with attractive LED display
                     boards and illuminated signage solutions designed to capture
                     attention.
                   </div>
+                  <a
+                    href="/led-board.html"
+                    class="theme-btn btn-style-one service-box-btn clearfix mt-2"
+                  >
+                    <span class="btn-wrap">
+                      <span class="text-one">Explore LED Board</span>
+                      <span class="text-two">Explore LED Board</span>
+                    </span>
+                    <span
+                      class="btn-arrow flaticon-right-arrow"
+                      id="btn-arrow"
+                    ></span>
+                  </a>
                 </div>
               </div>
 
@@ -2080,12 +2186,25 @@
               <div class="service-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
                   <div class="icon flaticon-printing"></div>
-                  <h6><a href="services.html">Printing</a></h6>
+                  <h6><a href="/printing.html">Printing</a></h6>
                   <div class="text">
                     From business stationery to promotional materials, we
                     provide printing solutions to meet your personal and
                     business requirements.
                   </div>
+                  <a
+                    href="/printing.html"
+                    class="theme-btn btn-style-one service-box-btn clearfix mt-2"
+                  >
+                    <span class="btn-wrap">
+                      <span class="text-one">Explore Printing</span>
+                      <span class="text-two">Explore Printing</span>
+                    </span>
+                    <span
+                      class="btn-arrow flaticon-right-arrow"
+                      id="btn-arrow"
+                    ></span>
+                  </a>
                 </div>
               </div>
 
@@ -2093,12 +2212,25 @@
               <div class="service-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
                   <div class="icon flaticon-branding"></div>
-                  <h6><a href="services.html">Painting</a></h6>
+                  <h6><a href="/paintings.html">Painting</a></h6>
                   <div class="text">
                     Enhance your brand presence with professional painting and
                     creative visual presentation solutions for advertising and
                     business spaces.
                   </div>
+                  <a
+                    href="/paintings.html"
+                    class="theme-btn btn-style-one service-box-btn clearfix mt-2"
+                  >
+                    <span class="btn-wrap">
+                      <span class="text-one">Explore Painting</span>
+                      <span class="text-two">Explore Painting</span>
+                    </span>
+                    <span
+                      class="btn-arrow flaticon-right-arrow"
+                      id="btn-arrow"
+                    ></span>
+                  </a>
                 </div>
               </div>
 
@@ -2106,25 +2238,30 @@
               <div class="service-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner-box">
                   <div class="icon flaticon-medal"></div>
-                  <h6><a href="services.html">Seal</a></h6>
+                  <h6><a href="/seal.html">Seal</a></h6>
                   <div class="text">
-                    Get custom business seals and rubber stamps for office,
-                    administrative and business documentation requirements.
+                    Get custom business seals , labbels and rubber stamps for
+                    office, administrative and business documentation
+                    requirements.
                   </div>
+                  <a
+                    href="/seal.html"
+                    class="theme-btn btn-style-one service-box-btn clearfix mt-2"
+                  >
+                    <span class="btn-wrap">
+                      <span class="text-one">Explore Seal</span>
+                      <span class="text-two">Explore Seal</span>
+                    </span>
+                    <span
+                      class="btn-arrow flaticon-right-arrow"
+                      id="btn-arrow"
+                    ></span>
+                  </a>
                 </div>
               </div>
             </div>
 
             <!-- Button Box -->
-            <div class="button-box text-center" style="margin-top: 30px">
-              <a href="services.html" class="theme-btn btn-style-one clearfix">
-                <span class="btn-wrap">
-                  <span class="text-one">View All Services</span>
-                  <span class="text-two">View All Services</span>
-                </span>
-                <span class="icon flaticon-right-arrow"></span>
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -2133,14 +2270,14 @@
       <!-- Business Section -->
       <section class="business-section">
         <div class="small-circle-layer"></div>
-        <div
+        <!-- <div
           class="vector-layer-one"
           style="background-image: url(images/icons/vector-1.png)"
-        ></div>
-        <div
+        ></div> -->
+        <!-- <div
           class="vector-layer-two"
           style="background-image: url(images/icons/vector-2.png)"
-        ></div>
+        ></div> -->
         <div
           class="vector-layer-three"
           style="background-image: url(images/icons/vector-5.png)"
@@ -2192,7 +2329,7 @@
                 </div>
                 <div
                   class="print-icon"
-                  style="bottom: -25px; right: 25px; z-index: 3;"
+                  style="bottom: -25px; right: 25px; z-index: 3"
                 >
                   <img src="images/icons/printer.png" alt="" />
                 </div>
@@ -2641,7 +2778,7 @@
 
           <!-- Bottom Action Button -->
           <div class="works-bottom-action text-center">
-            <a href="project.html" class="theme-btn btn-style-one clearfix">
+            <a href="/portfolio.html" class="theme-btn btn-style-one clearfix">
               <span class="btn-wrap">
                 <span class="text-one">View All Projects</span>
                 <span class="text-two">View All Projects</span>
